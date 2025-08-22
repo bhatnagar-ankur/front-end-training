@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Semantic Elements Training: Structure and Accessibility</title>
+    <link rel="stylesheet" href="../styles/semantic.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>HTML Semantic Elements Training</h1>
+            <p><strong>Master semantic HTML for better accessibility, SEO, and code maintainability!</strong> This
+                comprehensive guide covers everything you need to know about semantic vs non-semantic elements.</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Section 1: Understanding Semantic vs Non-Semantic Elements -->
+            <section class="section">
+                <h2>1. Understanding Semantic vs Non-Semantic Elements</h2>
+
+                <h3>What are Semantic Elements?</h3>
+                <p>Semantic elements are HTML tags that clearly describe their meaning and purpose to both browsers and
+                    developers. They provide context about the content they contain.</p>
+
+                <div class="comparison-grid">
+                    <div class="semantic-example">
+                        <h4>Semantic Elements</h4>
+                        <pre class="code-example"><code>&lt;header&gt;Site header content&lt;/header&gt;
+&lt;nav&gt;Navigation menu&lt;/nav&gt;
+&lt;main&gt;Primary content&lt;/main&gt;
+&lt;article&gt;Blog post or news article&lt;/article&gt;
+&lt;section&gt;Thematic content group&lt;/section&gt;
+&lt;aside&gt;Sidebar content&lt;/aside&gt;
+&lt;footer&gt;Site footer&lt;/footer&gt;</code></pre>
+                        <div class="info-box good">
+                            <strong>Benefits:</strong>
+                            <ul>
+                                <li>Clear meaning and purpose</li>
+                                <li>Better accessibility</li>
+                                <li>Improved SEO</li>
+                                <li>Easier maintenance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="non-semantic-example">
+                        <h4>Non-Semantic Elements</h4>
+                        <pre class="code-example"><code>&lt;div class="header"&gt;Site header content&lt;/div&gt;
+&lt;div class="navigation"&gt;Navigation menu&lt;/div&gt;
+&lt;div class="main-content"&gt;Primary content&lt;/div&gt;
+&lt;div class="article"&gt;Blog post or news article&lt;/div&gt;
+&lt;span class="highlight"&gt;Important text&lt;/span&gt;
+&lt;div class="footer"&gt;Site footer&lt;/div&gt;</code></pre>
+                        <div class="info-box neutral">
+                            <strong>Characteristics:</strong>
+                            <ul>
+                                <li>No inherent meaning</li>
+                                <li>Used for styling and layout</li>
+                                <li>Require classes/IDs for context</li>
+                                <li>Less accessible by default</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Differences</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Semantic Elements</th>
+                            <th>Non-Semantic Elements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Meaning</strong></td>
+                            <td>Clear, descriptive purpose</td>
+                            <td>No inherent meaning</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accessibility</strong></td>
+                            <td>Screen reader friendly</td>
+                            <td>Requires ARIA labels</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SEO Impact</strong></td>
+                            <td>Better search engine understanding</td>
+                            <td>Limited SEO benefit</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Code Readability</strong></td>
+                            <td>Self-documenting</td>
+                            <td>Depends on class/ID naming</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Examples</strong></td>
+                            <td>header, nav, main, article</td>
+                            <td>div, span</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section 2: HTML5 Semantic Elements -->
+            <section class="section">
+                <h2>2. HTML5 Semantic Elements: Header, Nav, Main, Article, Section, Aside, Footer</h2>
+
+                <h3>Document Structure Overview</h3>
+                <pre class="code-example"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;Semantic Document Structure&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Site Title&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Article Title&lt;/h2&gt;
+            &lt;section&gt;
+                &lt;h3&gt;Section Heading&lt;/h3&gt;
+                &lt;p&gt;Content goes here...&lt;/p&gt;
+            &lt;/section&gt;
+        &lt;/article&gt;
+        
+        &lt;aside&gt;
+            &lt;h3&gt;Related Links&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Related Article&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;Copyright 2025&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                <div class="elements-grid">
+                    <article class="element-card">
+                        <h3>header</h3>
+                        <p><strong>Purpose:</strong> Contains introductory content, typically including headings, logos,
+                            navigation, and search forms.</p>
+                        <pre class="code-example small"><code>&lt;header&gt;
+    &lt;h1&gt;My Website&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a href="/"&gt;Home&lt;/a&gt;
+        &lt;a href="/about"&gt;About&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+                        <div class="usage-note">
+                            <strong>Usage:</strong> Can be used multiple times - for the page header, article headers,
+                            or section headers.
+                        </div>
+                    </article>
+
+                    <article class="element-card">
+                        <h3>nav</h3>
+                        <p><strong>Purpose:</strong> Contains navigation links for the current document or related
+                            documents.</p>
+                        <pre class="code-example small"><code>&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                        <div class="usage-note">
+                            <strong>Usage:</strong> Use for primary navigation, breadcrumbs, and pagination. Not all
+                            links need to be in nav.
+                        </div>
+                    </article>
+
+                    <article class="element-card">
+                        <h3>main</h3>
+                        <p><strong>Purpose:</strong> Contains the primary content of the document. Should be unique per
+                            page.</p>
+                        <pre class="code-example small"><code>&lt;main&gt;
+    &lt;h1&gt;Page Title&lt;/h1&gt;
+    &lt;article&gt;
+        &lt;h2&gt;Article Heading&lt;/h2&gt;
+        &lt;p&gt;Main content goes here...&lt;/p&gt;
+    &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+                        <div class="usage-note">
+                            <strong>Usage:</strong> Only one main element per page. Should not be nested inside other
+                            semantic elements.
+                        </div>
+                    </article>
+
+                    <article class="element-card">
+                        <h3>article</h3>
+                        <p><strong>Purpose:</strong> Self-contained content that could be distributed independently
+                            (blog posts, news articles).</p>
+                        <pre class="code-example small"><code>&lt;article&gt;
+    &lt;h2&gt;How to Use Semantic HTML&lt;/h2&gt;
+    &lt;p&gt;Published on &lt;time datetime="2025-08-20"&gt;August 20, 2025&lt;/time&gt;&lt;/p&gt;
+    &lt;p&gt;Semantic HTML improves accessibility...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                        <div class="usage-note">
+                            <strong>Usage:</strong> Should make sense when taken out of context. Can contain other
+                            articles.
+                        </div>
+                    </article>
+
+                    <article class="element-card">
+                        <h3>section</h3>
+                        <p><strong>Purpose:</strong> Groups related content together, typically with a heading. More
+                            specific than div.</p>
+                        <pre class="code-example small"><code>&lt;section&gt;
+    &lt;h2&gt;Our Services&lt;/h2&gt;
+    &lt;p&gt;We offer web development services...&lt;/p&gt;
+    
+    &lt;section&gt;
+        &lt;h3&gt;Frontend Development&lt;/h3&gt;
+        &lt;p&gt;HTML, CSS, JavaScript...&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/section&gt;</code></pre>
+                        <div class="usage-note">
+                            <strong>Usage:</strong> Should have a clear heading. Use when other semantic elements don't
+                            fit.
+                        </div>
+                    </article>
+
+                    <article class="element-card">
+                        <h3>aside</h3>
+                        <p><strong>Purpose:</strong> Content related to the main content but can stand alone (sidebars,
+                            callouts, ads).</p>
+                        <pre class="code-example small"><code>&lt;aside&gt;
+    &lt;h3&gt;Related Articles&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;CSS Grid Tutorial&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;JavaScript Basics&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+                        <div class="usage-note">
+                            <strong>Usage:</strong> Can be used for sidebars, pull quotes, advertisements, or related
+                            content.
+                        </div>
+                    </article>
+
+                    <article class="element-card">
+                        <h3>footer</h3>
+                        <p><strong>Purpose:</strong> Contains information about the section or document (copyright,
+                            contact, links).</p>
+                        <pre class="code-example small"><code>&lt;footer&gt;
+    &lt;p&gt;&copy; 2025 My Website. All rights reserved.&lt;/p&gt;
+    &lt;nav&gt;
+        &lt;a href="/privacy"&gt;Privacy Policy&lt;/a&gt;
+        &lt;a href="/terms"&gt;Terms of Service&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/footer&gt;</code></pre>
+                        <div class="usage-note">
+                            <strong>Usage:</strong> Can be used multiple times - for page footer, article footer, or
+                            section footer.
+                        </div>
+                    </article>
+
+                    <article class="element-card">
+                        <h3>table</h3>
+                        <p><strong>Purpose:</strong> Displays tabular data with rows, columns, and optional headers.</p>
+                        <pre class="code-example small"><code>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Age&lt;/th&gt;
+            &lt;th&gt;Role&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;John Doe&lt;/td&gt;
+            &lt;td&gt;30&lt;/td&gt;
+            &lt;td&gt;Developer&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                        <div class="usage-note">
+                            <strong>Usage:</strong> Only use for actual tabular data, not for layout purposes.
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Section 3: Why Semantic HTML Matters -->
+            <section class="section">
+                <h2>3. Why Semantic HTML Matters for Accessibility and SEO</h2>
+
+                <div class="benefits-grid">
+                    <div class="benefit-card accessibility">
+                        <h3>Accessibility Benefits</h3>
+                        <h4>Screen Reader Navigation</h4>
+                        <p>Screen readers use semantic elements to create a page outline, allowing users to jump between
+                            sections quickly.</p>
+
+                        <h4>Keyboard Navigation</h4>
+                        <p>Semantic elements provide natural focus points and navigation landmarks for keyboard users.
+                        </p>
+
+                        <h4>Assistive Technology Support</h4>
+                        <pre class="code-example small"><code>&lt;!-- Screen readers understand this structure --&gt;
+&lt;nav aria-label="Main navigation"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;h1&gt;Page Title&lt;/h1&gt;
+    &lt;article&gt;
+        &lt;h2&gt;Article Title&lt;/h2&gt;
+        &lt;p&gt;Content accessible to all users...&lt;/p&gt;
+    &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+
+                        <div class="accessibility-stats">
+                            <h4>Impact Statistics</h4>
+                            <ul>
+                                <li>15% of the global population has some form of disability</li>
+                                <li>Semantic HTML reduces navigation time by up to 50% for screen reader users</li>
+                                <li>Proper headings help 70% of users find content faster</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card seo">
+                        <h3>SEO Benefits</h3>
+                        <h4>Search Engine Understanding</h4>
+                        <p>Search engines use semantic elements to better understand content structure and hierarchy.
+                        </p>
+
+                        <h4>Featured Snippets</h4>
+                        <p>Well-structured semantic HTML increases chances of appearing in featured snippets and rich
+                            results.</p>
+
+                        <h4>Content Hierarchy</h4>
+                        <pre class="code-example small"><code>&lt;!-- Search engines understand content importance --&gt;
+&lt;article&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Ultimate Guide to Web Development&lt;/h1&gt;
+        &lt;time datetime="2025-08-20"&gt;August 20, 2025&lt;/time&gt;
+    &lt;/header&gt;
+    
+    &lt;section&gt;
+        &lt;h2&gt;Getting Started with HTML&lt;/h2&gt;
+        &lt;p&gt;HTML is the foundation of web development...&lt;/p&gt;
+    &lt;/section&gt;
+    
+    &lt;section&gt;
+        &lt;h2&gt;CSS Styling Fundamentals&lt;/h2&gt;
+        &lt;p&gt;CSS controls the presentation layer...&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/article&gt;</code></pre>
+
+                        <div class="seo-benefits-list">
+                            <h4>SEO Improvements</h4>
+                            <ul>
+                                <li>Better content indexing and ranking</li>
+                                <li>Improved click-through rates from search results</li>
+                                <li>Enhanced rich snippet opportunities</li>
+                                <li>Faster crawling and indexing by search bots</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="additional-benefits">
+                    <h3>Additional Benefits</h3>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <h4>Code Maintainability</h4>
+                            <p>Semantic elements make code self-documenting and easier for teams to understand and
+                                maintain.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4>Future-Proofing</h4>
+                            <p>Semantic HTML is more likely to remain compatible with future web technologies and
+                                standards.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4>Performance</h4>
+                            <p>Cleaner markup often results in smaller file sizes and better rendering performance.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4>Team Collaboration</h4>
+                            <p>Clear semantic structure improves communication between developers, designers, and
+                                content creators.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Document Outline Structure -->
+            <section class="section">
+                <h2>4. Proper Document Outline Structure</h2>
+
+                <h3>Understanding Document Outline</h3>
+                <p>A document outline is the hierarchical structure of your HTML content, created by heading elements
+                    (h1-h6) and semantic sectioning elements.</p>
+
+                <div class="outline-examples">
+                    <div class="good-outline">
+                        <h4>Good Document Outline</h4>
+                        <pre class="code-example"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;Web Development Blog&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Web Development Blog&lt;/h1&gt; &lt;!-- Main heading --&gt;
+        &lt;nav&gt;
+            &lt;h2&gt;Navigation&lt;/h2&gt; &lt;!-- Hidden visually, accessible to screen readers --&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/tutorials"&gt;Tutorials&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Getting Started with HTML5 Semantic Elements&lt;/h2&gt;
+            
+            &lt;section&gt;
+                &lt;h3&gt;What are Semantic Elements?&lt;/h3&gt;
+                &lt;p&gt;Semantic elements provide meaning...&lt;/p&gt;
+                
+                &lt;section&gt;
+                    &lt;h4&gt;Benefits of Semantic HTML&lt;/h4&gt;
+                    &lt;p&gt;There are several key benefits...&lt;/p&gt;
+                &lt;/section&gt;
+            &lt;/section&gt;
+            
+            &lt;section&gt;
+                &lt;h3&gt;Common Semantic Elements&lt;/h3&gt;
+                &lt;p&gt;Here are the most commonly used elements...&lt;/p&gt;
+            &lt;/section&gt;
+        &lt;/article&gt;
+        
+        &lt;aside&gt;
+            &lt;h2&gt;Related Resources&lt;/h2&gt;
+            &lt;h3&gt;HTML Documentation&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;MDN Web Docs&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;W3C Specification&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;h2&gt;Site Information&lt;/h2&gt;
+        &lt;p&gt;&copy; 2025 Web Development Blog&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        <div class="outline-visualization">
+                            <h4>Generated Outline:</h4>
+                            <ul class="outline-tree">
+                                <li>1. Web Development Blog (h1)
+                                    <ul>
+                                        <li>1.1. Navigation (h2)</li>
+                                        <li>1.2. Getting Started with HTML5 Semantic Elements (h2)
+                                            <ul>
+                                                <li>1.2.1. What are Semantic Elements? (h3)
+                                                    <ul>
+                                                        <li>1.2.1.1. Benefits of Semantic HTML (h4)</li>
+                                                    </ul>
+                                                </li>
+                                                <li>1.2.2. Common Semantic Elements (h3)</li>
+                                            </ul>
+                                        </li>
+                                        <li>1.3. Related Resources (h2)</li>
+                                        <li>1.4. Site Information (h2)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bad-outline">
+                        <h4>Poor Document Outline</h4>
+                        <pre class="code-example"><code>&lt;!-- Problematic structure --&gt;
+&lt;body&gt;
+    &lt;div class="header"&gt;
+        &lt;h1&gt;My Website&lt;/h1&gt;
+        &lt;h3&gt;Welcome to our site&lt;/h3&gt; &lt;!-- Skipped h2 --&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="content"&gt;
+        &lt;h2&gt;About Us&lt;/h2&gt;
+        &lt;h4&gt;Our Mission&lt;/h4&gt; &lt;!-- Skipped h3 --&gt;
+        &lt;h1&gt;Contact Info&lt;/h1&gt; &lt;!-- Wrong hierarchy --&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+                        <div class="problems-list">
+                            <h4>Problems with this structure:</h4>
+                            <ul>
+                                <li>Skipped heading levels (h1 to h3, h2 to h4)</li>
+                                <li>Multiple h1 elements</li>
+                                <li>Non-semantic containers (div)</li>
+                                <li>Confusing hierarchy for screen readers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Document Outline Best Practices</h3>
+                <div class="best-practices-grid">
+                    <div class="practice-card">
+                        <h4>1. Use One H1 Per Page</h4>
+                        <pre class="code-example small"><code>&lt;h1&gt;Main Page Title&lt;/h1&gt; &lt;!-- Only one per page --&gt;
+&lt;h2&gt;Section Heading&lt;/h2&gt;
+&lt;h2&gt;Another Section&lt;/h2&gt;</code></pre>
+                        <p>The h1 should be the main topic of the page, like a book title.</p>
+                    </div>
+
+                    <div class="practice-card">
+                        <h4>2. Don't Skip Heading Levels</h4>
+                        <pre class="code-example small"><code>&lt;!-- Good --&gt;
+&lt;h1&gt;Title&lt;/h1&gt;
+&lt;h2&gt;Subtitle&lt;/h2&gt;
+&lt;h3&gt;Sub-subtitle&lt;/h3&gt;
+
+&lt;!-- Bad --&gt;
+&lt;h1&gt;Title&lt;/h1&gt;
+&lt;h3&gt;Subtitle&lt;/h3&gt; &lt;!-- Skipped h2 --&gt;</code></pre>
+                        <p>Always use headings in sequential order to maintain logical hierarchy.</p>
+                    </div>
+
+                    <div class="practice-card">
+                        <h4>3. Use Semantic Sectioning</h4>
+                        <pre class="code-example small"><code>&lt;article&gt;
+    &lt;h2&gt;Article Title&lt;/h2&gt;
+    &lt;section&gt;
+        &lt;h3&gt;Section in Article&lt;/h3&gt;
+    &lt;/section&gt;
+&lt;/article&gt;</code></pre>
+                        <p>Combine headings with semantic elements for better structure.</p>
+                    </div>
+
+                    <div class="practice-card">
+                        <h4>4. Make Headings Descriptive</h4>
+                        <pre class="code-example small"><code>&lt;!-- Good --&gt;
+&lt;h2&gt;How to Install Node.js&lt;/h2&gt;
+
+&lt;!-- Bad --&gt;
+&lt;h2&gt;Step 1&lt;/h2&gt;</code></pre>
+                        <p>Use descriptive headings that explain the content, not just numbering.</p>
+                    </div>
+                </div>
+
+                <div class="outline-tools">
+                    <h3>Tools for Testing Document Outline</h3>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <h4>Browser Developer Tools</h4>
+                            <p>Most browsers have accessibility panels that show the heading structure.</p>
+                        </div>
+                        <div class="tool-item">
+                            <h4>Screen Reader Testing</h4>
+                            <p>Test with NVDA, JAWS, or VoiceOver to experience the outline as assistive technology
+                                users do.</p>
+                        </div>
+                        <div class="tool-item">
+                            <h4>HTML Outline Validator</h4>
+                            <p>Online tools can analyze your HTML structure and show potential issues.</p>
+                        </div>
+                        <div class="tool-item">
+                            <h4>Web Accessibility Evaluation Tools</h4>
+                            <p>Tools like axe-core, WAVE, or Lighthouse provide outline analysis.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Reference Section -->
+            <section class="section summary-section">
+                <h2>Quick Reference Guide</h2>
+
+                <div class="reference-grid">
+                    <div class="reference-card">
+                        <h3>Semantic Elements</h3>
+                        <table class="reference-table">
+                            <tbody>
+                                <tr>
+                                    <td><code>header</code></td>
+                                    <td>Introductory content</td>
+                                </tr>
+                                <tr>
+                                    <td><code>nav</code></td>
+                                    <td>Navigation links</td>
+                                </tr>
+                                <tr>
+                                    <td><code>main</code></td>
+                                    <td>Primary content (one per page)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>article</code></td>
+                                    <td>Self-contained content</td>
+                                </tr>
+                                <tr>
+                                    <td><code>section</code></td>
+                                    <td>Thematic content group</td>
+                                </tr>
+                                <tr>
+                                    <td><code>aside</code></td>
+                                    <td>Related/sidebar content</td>
+                                </tr>
+                                <tr>
+                                    <td><code>footer</code></td>
+                                    <td>Footer information</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="reference-card">
+                        <h3>Document Outline Rules</h3>
+                        <ul class="checklist">
+                            <li>One h1 per page</li>
+                            <li>Don't skip heading levels</li>
+                            <li>Use sequential hierarchy</li>
+                            <li>Make headings descriptive</li>
+                            <li>Combine with semantic elements</li>
+                            <li>Test with screen readers</li>
+                        </ul>
+                    </div>
+
+                    <div class="reference-card">
+                        <h3>Benefits Checklist</h3>
+                        <ul class="benefits-checklist">
+                            <li>Improved accessibility</li>
+                            <li>Better SEO rankings</li>
+                            <li>Easier code maintenance</li>
+                            <li>Screen reader navigation</li>
+                            <li>Search engine understanding</li>
+                            <li>Future-proof structure</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <p><strong>Practice Tip:</strong> Start by converting existing div-based layouts to semantic HTML. Test with
+                screen readers and validator tools to ensure proper structure!</p>
+            <p class="footer-emphasis"><em>Build for everyone - make the web more accessible and meaningful.</em></p>
+        </footer>
+    </div>
+</body>
+
+</html>

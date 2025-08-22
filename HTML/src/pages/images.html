@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Images Training: Mastering the img Tag</title>
+    <link rel="stylesheet" href="../styles/images.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>HTML Images Training: Mastering the img Tag</h1>
+        <p><strong>Welcome to HTML images fundamentals!</strong> This comprehensive guide covers everything you need to
+            know about adding and managing images in HTML.</p>
+
+        <!-- Section 1: Adding Images with img Tag -->
+        <div class="section">
+            <h2>1. Adding Images with img Tag</h2>
+
+            <h3>Basic Image Syntax</h3>
+            <pre class="code-example"><code>&lt;img src="image-path" alt="description"&gt;</code></pre>
+            <div class="output-example">
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=300&h=200&fit=crop"
+                    alt="Professional worker at computer desk" width="300" height="200">
+                <p>This is an actual image using the img tag</p>
+            </div>
+
+            <h3>Complete Image Examples</h3>
+            <pre class="code-example"><code>&lt;!-- Local image --&gt;
+&lt;img src="images/logo.png" alt="Company Logo"&gt;
+
+&lt;!-- Image from subdirectory --&gt;
+&lt;img src="assets/photos/sunset.jpg" alt="Beautiful sunset over mountains"&gt;
+
+&lt;!-- External image --&gt;
+&lt;img src="https://example.com/images/banner.jpg" alt="Website banner image"&gt;</code></pre>
+            <div class="output-example">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=150&h=100&fit=crop"
+                    alt="Business team collaborating with laptops" width="150" height="100" class="example-image">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=250&h=167&fit=crop"
+                    alt="Mountain landscape photography" width="250" height="167" class="example-image">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=150&fit=crop"
+                    alt="Website analytics dashboard" width="400" height="150" class="example-image">
+            </div>
+
+            <h3>Self-Closing Tag</h3>
+            <div class="info-box">
+                <p><strong>Important:</strong> The <code>&lt;img&gt;</code> tag is a <strong>void element</strong>
+                    (self-closing). It doesn't have a closing tag like <code>&lt;/img&gt;</code>.</p>
+                <ul>
+                    <li><strong>HTML5:</strong> <code>&lt;img src="photo.jpg" alt="Photo"&gt;</code></li>
+                    <li><strong>XHTML:</strong> <code>&lt;img src="photo.jpg" alt="Photo" /&gt;</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 2: Image Attributes -->
+        <div class="section">
+            <h2>2. Image Attributes: src, alt, width, height</h2>
+
+            <h3>src Attribute (Source)</h3>
+            <p>The <code>src</code> attribute specifies the path to the image file.</p>
+            <pre class="code-example"><code>&lt;!-- Relative paths --&gt;
+&lt;img src="photo.jpg" alt="Photo in same directory"&gt;
+&lt;img src="images/photo.jpg" alt="Photo in images folder"&gt;
+&lt;img src="../images/photo.jpg" alt="Photo in parent directory"&gt;
+
+&lt;!-- Absolute paths --&gt;
+&lt;img src="/assets/images/photo.jpg" alt="Photo from root directory"&gt;
+&lt;img src="https://example.com/photo.jpg" alt="External photo"&gt;</code></pre>
+
+            <h3>alt Attribute (Alternative Text)</h3>
+            <p>The <code>alt</code> attribute provides alternative text for screen readers and when images fail to load.
+            </p>
+            <pre class="code-example"><code>&lt;!-- Descriptive alt text --&gt;
+&lt;img src="dog.jpg" alt="Golden retriever wearing business tie at office desk"&gt;
+
+&lt;!-- Functional alt text --&gt;
+&lt;img src="search-icon.png" alt="Search"&gt;
+
+&lt;!-- Empty alt for decorative images --&gt;
+&lt;img src="decoration.png" alt=""&gt;</code></pre>
+            <div class="output-example">
+                <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=300&h=200&fit=crop"
+                    alt="Golden retriever wearing business tie at office desk" width="300" height="200"
+                    class="example-image">
+                <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=100&h=100&fit=crop"
+                    alt="Search icon concept" width="100" height="100" class="example-image">
+                <div class="decorative-placeholder">Decorative element (empty alt)</div>
+            </div>
+
+            <h3>width and height Attributes</h3>
+            <p>These attributes set the display dimensions of the image in pixels.</p>
+            <pre class="code-example"><code>&lt;!-- Setting specific dimensions --&gt;
+&lt;img src="photo.jpg" alt="Professional worker relaxing at desk" width="300" height="200"&gt;
+
+&lt;!-- Setting only width (maintains aspect ratio) --&gt;
+&lt;img src="photo.jpg" alt="Team meeting with laughter" width="300"&gt;
+
+&lt;!-- Setting only height (maintains aspect ratio) --&gt;
+&lt;img src="photo.jpg" alt="Creative photography setup" height="200"&gt;
+
+&lt;!-- Large banner image --&gt;
+&lt;img src="banner.jpg" alt="Business analytics dashboard banner" width="800" height="200"&gt;</code></pre>
+            <div class="output-example">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop"
+                    alt="Professional worker relaxing at desk" width="300" height="200" class="example-image">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=300&h=225&fit=crop"
+                    alt="Team meeting with laughter" width="300" class="example-image">
+                <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=267&h=200&fit=crop"
+                    alt="Creative photography setup" height="200" class="example-image">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=150&fit=crop"
+                    alt="Business analytics dashboard banner" width="600" height="150" class="banner-image">
+            </div>
+
+            <h3>Combined Attributes Example</h3>
+            <pre class="code-example"><code>&lt;img src="products/laptop.jpg" 
+     alt="Professional worker with laptop showing frustrated expression with hammer" 
+     width="400" 
+     height="300"&gt;</code></pre>
+            <div class="output-example">
+                <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f93e586?w=400&h=300&fit=crop"
+                    alt="Professional worker with laptop showing frustrated expression with hammer" width="400"
+                    height="300" class="example-image">
+            </div>
+
+            <div class="best-practice">
+                <strong>Best Practice:</strong> Always include the <code>alt</code> attribute for accessibility. Use
+                <code>width</code> and <code>height</code> to prevent layout shifts during loading.
+            </div>
+        </div>
+
+        <!-- Section 3: Best Practices -->
+        <div class="section">
+            <h2>3. Best Practices for Web Images</h2>
+
+            <h3>File Formats and When to Use Them</h3>
+            <table class="format-table">
+                <thead>
+                    <tr>
+                        <th>Format</th>
+                        <th>Best For</th>
+                        <th>Features</th>
+                        <th>File Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>JPEG (.jpg)</strong></td>
+                        <td>Photographs, complex images</td>
+                        <td>Lossy compression, no transparency</td>
+                        <td>Small to medium</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PNG (.png)</strong></td>
+                        <td>Graphics with transparency, logos</td>
+                        <td>Lossless compression, transparency</td>
+                        <td>Medium to large</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WebP (.webp)</strong></td>
+                        <td>Modern web images</td>
+                        <td>Better compression than JPEG/PNG</td>
+                        <td>Small</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SVG (.svg)</strong></td>
+                        <td>Icons, simple graphics</td>
+                        <td>Vector-based, scalable</td>
+                        <td>Very small</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GIF (.gif)</strong></td>
+                        <td>Simple animations</td>
+                        <td>Limited colors, animation support</td>
+                        <td>Small to medium</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Image Optimization Guidelines</h3>
+            <pre class="code-example"><code>&lt;!-- Optimized image with proper attributes --&gt;
+&lt;img src="optimized-photo.webp" 
+     alt="Creative product photography with pink backdrop and kettle"
+     width="600" 
+     height="400"
+     loading="lazy"&gt;
+
+&lt;!-- Responsive image with srcset --&gt;
+&lt;img src="photo-medium.jpg" 
+     srcset="photo-small.jpg 480w, 
+             photo-medium.jpg 800w, 
+             photo-large.jpg 1200w"
+     sizes="(max-width: 480px) 480px, 
+            (max-width: 800px) 800px, 
+            1200px"
+     alt="Professional photography studio setup with multiple lights"
+     width="800" 
+     height="600"&gt;</code></pre>
+            <div class="output-example">
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop"
+                    alt="Creative product photography with colorful setup" width="600" height="400" loading="lazy"
+                    class="example-image">
+            </div>
+
+            <h3>Writing Effective Alt Text</h3>
+            <div class="alt-examples">
+                <div class="alt-example good">
+                    <h4>Good Alt Text Examples</h4>
+                    <pre class="code-example"><code>&lt;!-- Descriptive and specific --&gt;
+&lt;img src="chart.png" alt="Sales increased by 25% from January to March 2024"&gt;
+
+&lt;!-- Functional description --&gt;
+&lt;img src="download-icon.svg" alt="Download PDF report"&gt;
+
+&lt;!-- Context-appropriate --&gt;
+&lt;img src="author.jpg" alt="Dr. Sarah Johnson, lead researcher"&gt;</code></pre>
+                </div>
+
+                <div class="alt-example bad">
+                    <h4>Poor Alt Text Examples</h4>
+                    <pre class="code-example"><code>&lt;!-- Too generic --&gt;
+&lt;img src="chart.png" alt="chart"&gt;
+
+&lt;!-- Redundant information --&gt;
+&lt;img src="photo.jpg" alt="Photo of a person"&gt;
+
+&lt;!-- Missing context --&gt;
+&lt;img src="icon.png" alt="icon"&gt;</code></pre>
+                </div>
+            </div>
+
+            <h3>Performance Best Practices</h3>
+            <ul class="best-practices-list">
+                <li><strong>Use appropriate file formats</strong> based on image content</li>
+                <li><strong>Optimize file sizes</strong> without compromising quality</li>
+                <li><strong>Include width and height</strong> to prevent layout shifts</li>
+                <li><strong>Use lazy loading</strong> for images below the fold: <code>loading="lazy"</code></li>
+                <li><strong>Implement responsive images</strong> with <code>srcset</code> and <code>sizes</code></li>
+                <li><strong>Use WebP format</strong> when possible for better compression</li>
+            </ul>
+
+            <div class="warning">
+                <strong>Accessibility Warning:</strong> Never use <code>alt=""</code> for important images. Only use
+                empty alt text for purely decorative images that add no informational value.
+            </div>
+        </div>
+
+        <!-- Section 4: Figure and Figcaption -->
+        <div class="section">
+            <h2>4. Figure and Figcaption Elements</h2>
+
+            <h3>Basic Figure Structure</h3>
+            <pre class="code-example"><code>&lt;figure&gt;
+    &lt;img src="diagram.png" alt="Professional photography studio with equipment setup"&gt;
+    &lt;figcaption&gt;Figure 1: Complete professional photography workflow&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+            <div class="output-example">
+                <figure class="demo-figure">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=333&fit=crop"
+                        alt="Professional photography studio with equipment setup" width="500" height="333">
+                    <figcaption>Figure 1: Complete professional photography workflow</figcaption>
+                </figure>
+            </div>
+
+            <h3>Figure with Multiple Images</h3>
+            <pre class="code-example"><code>&lt;figure&gt;
+    &lt;img src="before.jpg" alt="Office worker stressed with laptop"&gt;
+    &lt;img src="after.jpg" alt="Same worker relaxed and smiling"&gt;
+    &lt;figcaption&gt;Before and after: The power of good coffee in the workplace&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+            <div class="output-example">
+                <figure class="demo-figure">
+                    <div class="image-pair">
+                        <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f93e586?w=250&h=167&fit=crop"
+                            alt="Office worker stressed with laptop" width="250" height="167">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=250&h=167&fit=crop"
+                            alt="Same worker relaxed and smiling" width="250" height="167">
+                    </div>
+                    <figcaption>Before and after: The power of good coffee in the workplace</figcaption>
+                </figure>
+            </div>
+
+            <h3>Figure with Code Example</h3>
+            <pre class="code-example"><code>&lt;figure&gt;
+    &lt;pre&gt;&lt;code&gt;
+function greetUser(name) {
+    return `Hello, ${name}!`;
+}
+    &lt;/code&gt;&lt;/pre&gt;
+    &lt;figcaption&gt;Listing 1: JavaScript function for user greeting&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+            <div class="output-example">
+                <figure class="demo-figure">
+                    <pre class="code-block"><code>function greetUser(name) {
+    return `Hello, ${name}!`;
+}</code></pre>
+                    <figcaption>Listing 1: JavaScript function for user greeting</figcaption>
+                </figure>
+            </div>
+
+            <h3>Figure with Table</h3>
+            <pre class="code-example"><code>&lt;figure&gt;
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Browser&lt;/th&gt;
+                &lt;th&gt;Market Share&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Chrome&lt;/td&gt;
+                &lt;td&gt;65.1%&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Safari&lt;/td&gt;
+                &lt;td&gt;18.8%&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;figcaption&gt;Table 1: Browser market share data for 2024&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+            <div class="output-example">
+                <figure class="demo-figure">
+                    <table class="demo-table">
+                        <thead>
+                            <tr>
+                                <th>Browser</th>
+                                <th>Market Share</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Chrome</td>
+                                <td>65.1%</td>
+                            </tr>
+                            <tr>
+                                <td>Safari</td>
+                                <td>18.8%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <figcaption>Table 1: Browser market share data for 2024</figcaption>
+                </figure>
+            </div>
+
+            <h3>Figcaption Positioning</h3>
+            <pre class="code-example"><code>&lt;!-- Caption at the top --&gt;
+&lt;figure&gt;
+    &lt;figcaption&gt;Creative product photography with amusing props&lt;/figcaption&gt;
+    &lt;img src="architecture.svg" alt="Creative kettle pouring pink liquid into stacked glasses"&gt;
+&lt;/figure&gt;
+
+&lt;!-- Caption at the bottom (more common) --&gt;
+&lt;figure&gt;
+    &lt;img src="results.png" alt="Happy business team collaborating around laptop"&gt;
+    &lt;figcaption&gt;Results from team building exercise: 95% fun factor achieved&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+            <div class="output-example">
+                <figure class="demo-figure">
+                    <figcaption>Creative product photography with amusing props</figcaption>
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=333&fit=crop"
+                        alt="Creative kettle pouring pink liquid into stacked glasses" width="500" height="333">
+                </figure>
+
+                <figure class="demo-figure">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=333&fit=crop"
+                        alt="Happy business team collaborating around laptop" width="500" height="333">
+                    <figcaption>Results from team building exercise: 95% fun factor achieved</figcaption>
+                </figure>
+            </div>
+
+            <div class="info-box">
+                <h4>When to Use Figure and Figcaption</h4>
+                <ul>
+                    <li><strong>Images that need captions</strong> or detailed descriptions</li>
+                    <li><strong>Diagrams and charts</strong> that require explanation</li>
+                    <li><strong>Code examples</strong> that need context or numbering</li>
+                    <li><strong>Tables and data</strong> that need titles or explanations</li>
+                    <li><strong>Any content</strong> that is referenced from the main text</li>
+                </ul>
+            </div>
+
+            <div class="best-practice">
+                <strong>Figure Best Practices:</strong>
+                <ul>
+                    <li>Use <code>&lt;figure&gt;</code> for self-contained content that can be moved without losing
+                        meaning</li>
+                    <li>Keep <code>&lt;figcaption&gt;</code> concise but descriptive</li>
+                    <li><code>&lt;figcaption&gt;</code> should be the first or last child of <code>&lt;figure&gt;</code>
+                    </li>
+                    <li>Only use one <code>&lt;figcaption&gt;</code> per <code>&lt;figure&gt;</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Advanced Examples Section -->
+        <div class="section">
+            <h2>5. Advanced Image Techniques</h2>
+
+            <h3>Responsive Images</h3>
+            <pre class="code-example"><code>&lt;!-- Using picture element for art direction --&gt;
+&lt;picture&gt;
+    &lt;source media="(max-width: 480px)" srcset="hero-mobile.jpg"&gt;
+    &lt;source media="(max-width: 768px)" srcset="hero-tablet.jpg"&gt;
+    &lt;img src="hero-desktop.jpg" alt="Professional worker in modern office environment"&gt;
+&lt;/picture&gt;
+
+&lt;!-- Using srcset for different resolutions --&gt;
+&lt;img src="photo.jpg" 
+     srcset="photo-1x.jpg 1x, photo-2x.jpg 2x, photo-3x.jpg 3x"
+     alt="High-resolution business team meeting photo"&gt;</code></pre>
+
+            <h3>Image Gallery with Figures</h3>
+            <pre class="code-example"><code>&lt;div class="gallery"&gt;
+    &lt;figure&gt;
+        &lt;img src="gallery1.jpg" alt="Dog in business attire at office desk"&gt;
+        &lt;figcaption&gt;Employee of the Month&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    
+    &lt;figure&gt;
+        &lt;img src="gallery2.jpg" alt="Creative photography studio setup"&gt;
+        &lt;figcaption&gt;Behind the scenes magic&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    
+    &lt;figure&gt;
+        &lt;img src="gallery3.jpg" alt="Professional worker with laptop in bright office"&gt;
+        &lt;figcaption&gt;Modern workspace vibes&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+            <div class="output-example">
+                <div class="demo-gallery">
+                    <figure class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=250&h=167&fit=crop"
+                            alt="Dog in business attire at office desk" width="250" height="167">
+                        <figcaption>Employee of the Month</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=250&h=167&fit=crop"
+                            alt="Creative photography studio setup" width="250" height="167">
+                        <figcaption>Behind the scenes magic</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=250&h=167&fit=crop"
+                            alt="Professional worker with laptop in bright office" width="250" height="167">
+                        <figcaption>Modern workspace vibes</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Reference Section -->
+        <div class="section summary-section">
+            <h2>Quick Reference Guide</h2>
+
+            <div class="reference-grid">
+                <div class="reference-card">
+                    <h3>Essential Attributes</h3>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td><code>src</code></td>
+                                <td>Image file path (required)</td>
+                            </tr>
+                            <tr>
+                                <td><code>alt</code></td>
+                                <td>Alternative text (required)</td>
+                            </tr>
+                            <tr>
+                                <td><code>width</code></td>
+                                <td>Image width in pixels</td>
+                            </tr>
+                            <tr>
+                                <td><code>height</code></td>
+                                <td>Image height in pixels</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="reference-card">
+                    <h3>Common File Formats</h3>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td><code>.jpg</code></td>
+                                <td>Photos, complex images</td>
+                            </tr>
+                            <tr>
+                                <td><code>.png</code></td>
+                                <td>Graphics with transparency</td>
+                            </tr>
+                            <tr>
+                                <td><code>.webp</code></td>
+                                <td>Modern, optimized format</td>
+                            </tr>
+                            <tr>
+                                <td><code>.svg</code></td>
+                                <td>Vector graphics, icons</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="reference-card">
+                    <h3>Figure Elements</h3>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td><code>&lt;figure&gt;</code></td>
+                                <td>Container for self-contained content</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;figcaption&gt;</code></td>
+                                <td>Caption or description</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="reference-card">
+                    <h3>Best Practices</h3>
+                    <ul class="checklist">
+                        <li>Always include alt text</li>
+                        <li>Optimize file sizes</li>
+                        <li>Use appropriate formats</li>
+                        <li>Set width and height</li>
+                        <li>Consider lazy loading</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <p><strong>Practice Tip:</strong> Start with basic img tags, then experiment with figure elements and
+                responsive techniques. Test your images across different devices and screen readers!</p>
+            <p class="footer-emphasis"><em>Happy coding! Make the web more visual and accessible.</em></p>
+        </footer>
+    </div>
+</body>
+
+</html>

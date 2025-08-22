@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Training: Text Emphasis, Lists, and Layout Elements</title>
+    <link rel="stylesheet" href="../styles/textFormattingList.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎓 HTML Training for Text Formatting and Lists</h1>
+        <p><strong>Welcome to HTML fundamentals!</strong> This page covers essential HTML elements every web developer
+            should master.</p>
+
+        <!-- Section 1: Text Emphasis -->
+        <div class="section">
+            <h2>1. Text Emphasis: Bold, Italic, Underline, Mark</h2>
+
+            <h3>Bold Text</h3>
+            <pre class="code-example"><code>&lt;b&gt;Visual bold text&lt;/b&gt;
+&lt;strong&gt;Semantically important text&lt;/strong&gt;</code></pre>
+            <div class="output-example">
+                <b>Visual bold text</b><br>
+                <strong>Semantically important text</strong>
+            </div>
+
+            <h3>Italic Text</h3>
+            <pre class="code-example"><code>&lt;i&gt;Visual italic text&lt;/i&gt;
+&lt;em&gt;Emphasized text with semantic meaning&lt;/em&gt;</code></pre>
+            <div class="output-example">
+                <i>Visual italic text</i><br>
+                <em>Emphasized text with semantic meaning</em>
+            </div>
+
+            <h3>Underline Text</h3>
+            <pre class="code-example"><code>&lt;u&gt;Underlined text&lt;/u&gt;
+&lt;ins&gt;Inserted text (also underlined)&lt;/ins&gt;</code></pre>
+            <div class="output-example">
+                <u>Underlined text</u><br>
+                <ins>Inserted text (also underlined)</ins>
+            </div>
+
+            <h3>Highlighted/Marked Text</h3>
+            <pre class="code-example"><code>&lt;mark&gt;Highlighted text&lt;/mark&gt;
+&lt;mark class="custom-highlight"&gt;Custom highlighted text&lt;/mark&gt;</code></pre>
+            <div class="output-example">
+                <mark>Highlighted text</mark><br>
+                <mark class="custom-highlight">Custom highlighted text</mark>
+            </div>
+
+            <h3>Combined Text Emphasis</h3>
+            <pre class="code-example"><code>&lt;p&gt;This is &lt;strong&gt;&lt;em&gt;very important and emphasized&lt;/em&gt;&lt;/strong&gt; text.&lt;/p&gt;
+&lt;p&gt;Here's some &lt;mark&gt;&lt;b&gt;highlighted bold&lt;/b&gt;&lt;/mark&gt; text.&lt;/p&gt;</code></pre>
+            <div class="output-example">
+                <p>This is <strong><em>very important and emphasized</em></strong> text.</p>
+                <p>Here's some <mark><b>highlighted bold</b></mark> text.</p>
+            </div>
+
+            <div class="best-practice">
+                <strong>💡 Best Practice:</strong> Use <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> for
+                semantic emphasis (screen readers understand these). Use <code>&lt;b&gt;</code> and
+                <code>&lt;i&gt;</code> for purely visual styling.
+            </div>
+        </div>
+
+        <!-- Section 2: Lists -->
+        <div class="section">
+            <h2>2. Creating Ordered and Unordered Lists</h2>
+
+            <h3>Unordered Lists (Bulleted)</h3>
+            <pre class="code-example"><code>&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+  &lt;li&gt;React&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            <div class="output-example">
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                </ul>
+            </div>
+
+            <h3>Ordered Lists (Numbered)</h3>
+            <pre class="code-example"><code>&lt;ol&gt;
+  &lt;li&gt;Plan your project&lt;/li&gt;
+  &lt;li&gt;Write HTML structure&lt;/li&gt;
+  &lt;li&gt;Style with CSS&lt;/li&gt;
+  &lt;li&gt;Add JavaScript functionality&lt;/li&gt;
+  &lt;li&gt;Test and deploy&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            <div class="output-example">
+                <ol>
+                    <li>Plan your project</li>
+                    <li>Write HTML structure</li>
+                    <li>Style with CSS</li>
+                    <li>Add JavaScript functionality</li>
+                    <li>Test and deploy</li>
+                </ol>
+            </div>
+
+            <h3>Custom List Styles</h3>
+            <pre class="code-example"><code>&lt;ul class="square-bullets"&gt;
+  &lt;li&gt;Square bullets&lt;/li&gt;
+  &lt;li&gt;Another item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol class="letter-list"&gt;
+  &lt;li&gt;First item (A)&lt;/li&gt;
+  &lt;li&gt;Second item (B)&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            <div class="output-example">
+                <ul class="square-bullets">
+                    <li>Square bullets</li>
+                    <li>Another item</li>
+                </ul>
+                <ol class="letter-list">
+                    <li>First item (A)</li>
+                    <li>Second item (B)</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Section 3: Nested Lists -->
+        <div class="section">
+            <h2>3. Nested Lists and Best Practices</h2>
+
+            <h3>Properly Nested Unordered Lists</h3>
+            <pre class="code-example"><code>&lt;ul&gt;
+  &lt;li&gt;Frontend Technologies
+    &lt;ul&gt;
+      &lt;li&gt;HTML5&lt;/li&gt;
+      &lt;li&gt;CSS3
+        &lt;ul&gt;
+          &lt;li&gt;Flexbox&lt;/li&gt;
+          &lt;li&gt;Grid&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;JavaScript&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Backend Technologies
+    &lt;ul&gt;
+      &lt;li&gt;Node.js&lt;/li&gt;
+      &lt;li&gt;Python&lt;/li&gt;
+      &lt;li&gt;PHP&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            <div class="output-example">
+                <ul>
+                    <li>Frontend Technologies
+                        <ul>
+                            <li>HTML5</li>
+                            <li>CSS3
+                                <ul>
+                                    <li>Flexbox</li>
+                                    <li>Grid</li>
+                                </ul>
+                            </li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </li>
+                    <li>Backend Technologies
+                        <ul>
+                            <li>Node.js</li>
+                            <li>Python</li>
+                            <li>PHP</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <h3>Mixed Nested Lists (Ordered + Unordered)</h3>
+            <pre class="code-example"><code>&lt;ol&gt;
+  &lt;li&gt;Learn HTML Basics
+    &lt;ul&gt;
+      &lt;li&gt;Tags and elements&lt;/li&gt;
+      &lt;li&gt;Attributes&lt;/li&gt;
+      &lt;li&gt;Document structure&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Practice Building Pages
+    &lt;ol class="lowercase-list"&gt;
+      &lt;li&gt;Create a simple homepage&lt;/li&gt;
+      &lt;li&gt;Build a contact form&lt;/li&gt;
+      &lt;li&gt;Make a portfolio site&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            <div class="output-example">
+                <ol>
+                    <li>Learn HTML Basics
+                        <ul>
+                            <li>Tags and elements</li>
+                            <li>Attributes</li>
+                            <li>Document structure</li>
+                        </ul>
+                    </li>
+                    <li>Practice Building Pages
+                        <ol class="lowercase-list">
+                            <li>Create a simple homepage</li>
+                            <li>Build a contact form</li>
+                            <li>Make a portfolio site</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="best-practice">
+                <strong>✅ Nested List Best Practices:</strong>
+                <ul>
+                    <li>Always place nested lists <strong>inside</strong> an <code>&lt;li&gt;</code> element, not
+                        directly inside another list</li>
+                    <li>Use proper indentation in your code for readability</li>
+                    <li>Keep nesting levels reasonable (usually 2-3 levels max)</li>
+                    <li>Mix ordered and unordered lists as needed for hierarchy</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <strong>❌ Common Mistake:</strong> Never place a nested list directly inside <code>&lt;ul&gt;</code> or
+                <code>&lt;ol&gt;</code>. It must always be inside an <code>&lt;li&gt;</code> element.
+            </div>
+        </div>
+
+        <!-- Section 4: Line Breaks and Horizontal Rules -->
+        <div class="section">
+            <h2>4. Line Breaks and Horizontal Rules</h2>
+
+            <h3>Line Breaks with &lt;br&gt;</h3>
+            <pre class="code-example"><code>&lt;p&gt;This is the first line.&lt;br&gt;
+This is the second line.&lt;br&gt;
+And this is the third line.&lt;/p&gt;
+
+&lt;address&gt;
+  John Doe&lt;br&gt;
+  123 Web Development Street&lt;br&gt;
+  Code City, HTML 12345
+&lt;/address&gt;</code></pre>
+            <div class="output-example">
+                <p>This is the first line.<br>
+                    This is the second line.<br>
+                    And this is the third line.</p>
+
+                <address>
+                    John Doe<br>
+                    123 Web Development Street<br>
+                    Code City, HTML 12345
+                </address>
+            </div>
+
+            <h3>Horizontal Rules with &lt;hr&gt;</h3>
+            <pre class="code-example"><code>&lt;h3&gt;Chapter 1: Introduction&lt;/h3&gt;
+&lt;p&gt;Welcome to HTML basics...&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;h3&gt;Chapter 2: Advanced Topics&lt;/h3&gt;
+&lt;p&gt;Now let's dive deeper...&lt;/p&gt;
+&lt;hr class="custom-hr"&gt;
+
+&lt;h3&gt;Chapter 3: Best Practices&lt;/h3&gt;
+&lt;p&gt;Here are some tips...&lt;/p&gt;</code></pre>
+            <div class="output-example">
+                <h3>Chapter 1: Introduction</h3>
+                <p>Welcome to HTML basics...</p>
+                <hr>
+
+                <h3>Chapter 2: Advanced Topics</h3>
+                <p>Now let's dive deeper...</p>
+                <hr class="custom-hr">
+
+                <h3>Chapter 3: Best Practices</h3>
+                <p>Here are some tips...</p>
+            </div>
+
+            <h3>Styled Horizontal Rules</h3>
+            <pre class="code-example"><code>&lt;!-- Basic HR --&gt;
+&lt;hr&gt;
+
+&lt;!-- Colored HR with custom width --&gt;
+&lt;hr class="red-hr"&gt;
+
+&lt;!-- Dashed HR --&gt;
+&lt;hr class="dashed-hr"&gt;
+
+&lt;!-- Dotted HR --&gt;
+&lt;hr class="dotted-hr"&gt;</code></pre>
+            <div class="output-example">
+                <!-- Basic HR -->
+                <hr>
+
+                <!-- Colored HR with custom width -->
+                <hr class="red-hr">
+
+                <!-- Dashed HR -->
+                <hr class="dashed-hr">
+
+                <!-- Dotted HR -->
+                <hr class="dotted-hr">
+            </div>
+
+            <div class="best-practice">
+                <strong>💡 When to Use:</strong>
+                <ul>
+                    <li><code>&lt;br&gt;</code>: Use for line breaks within content (poems, addresses, short lines)</li>
+                    <li><code>&lt;hr&gt;</code>: Use for thematic breaks between sections or topics</li>
+                    <li>Avoid using multiple <code>&lt;br&gt;</code> tags for spacing - use CSS margins instead</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Note:</strong> Both <code>&lt;br&gt;</code> and <code>&lt;hr&gt;</code> are self-closing tags
+                in HTML5. Write them as <code>&lt;br&gt;</code> and <code>&lt;hr&gt;</code> (or
+                <code>&lt;br /&gt;</code> and <code>&lt;hr /&gt;</code> for XHTML compatibility).
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="section summary-section">
+            <h2>📋 Quick Reference Summary</h2>
+
+            <table class="reference-table">
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>&lt;strong&gt;</code></td>
+                        <td>Important text (semantic)</td>
+                        <td><strong>Important!</strong></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;em&gt;</code></td>
+                        <td>Emphasized text (semantic)</td>
+                        <td><em>Emphasized</em></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;mark&gt;</code></td>
+                        <td>Highlighted text</td>
+                        <td><mark>Highlighted</mark></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;ul&gt;</code></td>
+                        <td>Unordered (bulleted) list</td>
+                        <td>• Item 1<br>• Item 2</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;ol&gt;</code></td>
+                        <td>Ordered (numbered) list</td>
+                        <td>1. Item 1<br>2. Item 2</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;br&gt;</code></td>
+                        <td>Line break</td>
+                        <td>Line 1<br>Line 2</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;hr&gt;</code></td>
+                        <td>Horizontal rule/separator</td>
+                        <td class="hr-cell">
+                            <hr class="table-hr">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="page-footer">
+            <p><strong>🎯 Practice Tip:</strong> Try creating your own HTML page using all these elements. Experiment
+                with different combinations and see how they work together!</p>
+            <p class="footer-emphasis"><em>Happy coding! 💻</em></p>
+        </footer>
+    </div>
+</body>
+
+</html>

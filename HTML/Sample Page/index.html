@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jazzed Web Tech Showcase</title>
+  <style>
+    /* WCAG AAA Color Variables */
+    :root {
+      --color-bg-light: #ffffff;
+      --color-bg-dark: #1a1a2e;
+      --text-light: #0d1b2a;
+      --text-dark: #f8f9fa;
+      --accent: #e94560;
+      --accent-hover: #d83a52;
+      --secondary: #0f4c75;
+      --mascot-ear: #e94560;
+      --mascot-head: #0f4c75;
+      --mascot-glass: #ffffff;
+      --mascot-detail: #0f4c75;
+      --mascot-accessory: #ffffff;
+      --mascot-mouth: #d35400;            /* new light theme mouth */
+      --mascot-ear-dark: #d83a52;
+      --mascot-head-dark: #274472;
+      --mascot-glass-dark: #ffffff;
+      --mascot-detail-dark: #f8f9fa;
+      --mascot-accessory-dark: #f8f9fa;
+      --mascot-mouth-dark: #ffffff;       /* original for dark theme */
+      --radius: 0.5rem;
+    }
+    body {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      background: var(--color-bg-light);
+      color: var(--text-light);
+      transition: background 0.4s, color 0.4s;
+      overflow: hidden; position: relative;
+    }
+    body.dark {
+      background: var(--color-bg-dark);
+      color: var(--text-dark);
+    }
+    .container {
+      position: relative; z-index: 1;
+      min-height: 100vh; padding: 4rem 2rem;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      gap: 2rem;
+    }
+    h1 { font-size: 3rem; letter-spacing: 2px; }
+    p { max-width: 600px; line-height: 1.6; opacity: 0.9; }
+
+    /* SVG Mascot */
+    .mascot { width: 140px; height: 140px; transition: transform 0.3s; }
+    .mascot:hover { transform: scale(1.1) rotate(-5deg); }
+    .mascot .ear { fill: var(--mascot-ear); }
+    .mascot .head { fill: var(--mascot-head); }
+    .mascot .glass { fill: var(--mascot-glass); }
+    .mascot .detail { fill: var(--mascot-detail); }
+    .mascot .accessory { stroke: var(--mascot-accessory); }
+    .mascot .mouth { stroke: var(--mascot-mouth); stroke-width: 5; fill: none; stroke-linecap: round; }
+
+    /* Dark theme overrides */
+    body.dark .mascot .ear { fill: var(--mascot-ear-dark); }
+    body.dark .mascot .head { fill: var(--mascot-head-dark); }
+    body.dark .mascot .glass { fill: var(--mascot-glass-dark); }
+    body.dark .mascot .detail { fill: var(--mascot-detail-dark); }
+    body.dark .mascot .accessory { stroke: var(--mascot-accessory-dark); }
+    body.dark .mascot .mouth { stroke: var(--mascot-mouth-dark); }
+
+    /* Buttons */
+    .btn {
+      position: relative; padding: 0.75rem 2rem;
+      font-size: 1rem; font-weight: 600; color: #fff;
+      background: var(--accent); border: none;
+      border-radius: var(--radius); cursor: pointer;
+      overflow: hidden; transition: background 0.3s, transform 0.3s;
+    }
+    .btn:hover { background: var(--accent-hover); transform: translateY(-3px); }
+    .btn:focus { outline: 3px solid var(--secondary); outline-offset: 2px; }
+    .btn .ripple {
+      position: absolute; border-radius: 50%; transform: scale(0);
+      background: rgba(255,255,255,0.6); animation: ripple 0.6s linear;
+      pointer-events: none;
+    }
+    @keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+    .search-input {
+      padding: 0.75rem 1.25rem; width: 260px; font-size: 1rem;
+      border: 2px solid var(--secondary); border-radius: var(--radius);
+      transition: border-color 0.3s, box-shadow 0.3s; margin-bottom: 2rem;
+    }
+    .search-input:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .learn-more {
+      color: var(--accent); font-weight: 600; text-decoration: none;
+      position: relative; transition: color 0.3s;
+    }
+    .learn-more::after {
+      content: ''; position: absolute; width: 0; height: 2px;
+      background: var(--accent); left: 0; bottom: -4px;
+      transition: width 0.3s;
+    }
+    .learn-more:hover { color: var(--accent-hover); }
+    .learn-more:hover::after { width: 100%; }
+
+    .circle {
+      position: absolute; border-radius: 50%; background: var(--secondary);
+      opacity: 0.1; animation: float 8s ease-in-out infinite;
+      transition: transform 0.3s, background 0.3s; z-index: 0;
+    }
+    .circle:hover {
+      transform: scale(1.2) translateY(-10px);
+      background: var(--accent); opacity: 0.2;
+    }
+    @keyframes float { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px,-30px); } }
+
+    footer {
+      position: absolute; bottom: 1rem; font-size: 0.85rem;
+      opacity: 0.7; width: 100%; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- SVG Tech-Savvy Mascot -->
+    <svg class="mascot" viewBox="0 0 200 200" aria-label="Tech Savvy Mascot" role="img">
+      <circle class="ear" cx="50" cy="50" r="25"/>
+      <circle class="ear" cx="150" cy="50" r="25"/>
+      <circle class="head" cx="100" cy="100" r="80"/>
+      <rect class="glass" x="55" y="80" width="35" height="20" rx="5"/>
+      <rect class="glass" x="110" y="80" width="35" height="20" rx="5"/>
+      <line class="glass" x1="90" y1="90" x2="110" y2="90" stroke-width="5"/>
+      <circle class="detail" cx="70" cy="90" r="5"/>
+      <circle class="detail" cx="130" cy="90" r="5"/>
+      <path class="mouth" d="M80,130 Q100,150 120,130"/>
+      <path class="accessory" d="M20,110 Q0,150 40,150" stroke-width="8" fill="none"/>
+      <path class="accessory" d="M180,110 Q200,150 160,150" stroke-width="8" fill="none"/>
+      <circle class="accessory" cx="40" cy="150" r="15"/>
+      <circle class="accessory" cx="160" cy="150" r="15"/>
+    </svg>
+
+    <h1>Jazzed Web Tech Showcase</h1>
+    <p>Immerse in a vibrant demo of HTML, CSS, and JavaScript—with accessible design, snappy micro-interactions, and a mascot ready for your future frameworks.</p>
+    <button class="btn" id="themeBtn">Switch to Dark Mode</button>
+    <input type="text" class="search-input" placeholder="Search the showcase" aria-label="Search showcase" />
+    <p><a href="#" class="learn-more">Learn More →</a></p>
+  </div>
+  <footer>&copy; 2025 Web Tech Showcase</footer>
+
+  <script>
+    // Floating circles
+    for (let i = 0; i < 18; i++) {
+      const c = document.createElement('div');
+      c.classList.add('circle');
+      const size = Math.random() * 120 + 40;
+      c.style.width = c.style.height = size + 'px';
+      c.style.top = Math.random() * 100 + '%';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.animationDuration = Math.random() * 7 + 5 + 's';
+      document.body.appendChild(c);
+    }
+
+    // Ripple effect
+    function createRipple(e) {
+      const btn = e.currentTarget;
+      const circle = document.createElement('span');
+      const rect = btn.getBoundingClientRect();
+      const d = Math.max(rect.width, rect.height);
+      circle.style.width = circle.style.height = d + 'px';
+      circle.style.left = e.clientX - rect.left - d/2 + 'px';
+      circle.style.top = e.clientY - rect.top - d/2 + 'px';
+      circle.classList.add('ripple');
+      btn.appendChild(circle);
+      setTimeout(() => circle.remove(), 600);
+    }
+    document.querySelectorAll('.btn').forEach(btn => btn.addEventListener('click', createRipple));
+
+    // Theme toggle
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', e => {
+      document.body.classList.toggle('dark');
+      themeBtn.textContent = document.body.classList.contains('dark')
+        ? 'Switch to Light Mode'
+        : 'Switch to Dark Mode';
+      createRipple(e);
+    });
+  </script>
+</body>
+</html>

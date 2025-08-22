@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Links Training: Anchor Tags and Hyperlinks</title>
+    <link rel="stylesheet" href="../styles/links.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>HTML Links Training: Mastering Anchor Tags</h1>
+        <p><strong>Welcome to HTML links fundamentals!</strong> This page covers everything you need to know about
+            creating hyperlinks and anchor tags in HTML.</p>
+
+        <!-- Section 1: Creating Hyperlinks -->
+        <div class="section">
+            <h2>1. Creating Hyperlinks with Anchor Tags</h2>
+
+            <h3>Basic Anchor Tag Structure</h3>
+            <pre class="code-example"><code>&lt;a href="URL"&gt;Link Text&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="#" class="demo-link">This is a basic hyperlink</a>
+            </div>
+
+            <h3>Complete Link Examples</h3>
+            <pre class="code-example"><code>&lt;a href="https://www.example.com"&gt;Visit Example Website&lt;/a&gt;
+&lt;a href="about.html"&gt;About Us&lt;/a&gt;
+&lt;a href="/products/laptops.html"&gt;View Laptops&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="https://www.example.com" class="demo-link">Visit Example Website</a><br>
+                <a href="#" class="demo-link">About Us</a><br>
+                <a href="#" class="demo-link">View Laptops</a>
+            </div>
+
+            <h3>Anchor Tag Components</h3>
+            <div class="info-box">
+                <ul>
+                    <li><strong>Opening tag:</strong> <code>&lt;a&gt;</code></li>
+                    <li><strong>href attribute:</strong> Specifies the destination URL</li>
+                    <li><strong>Link text:</strong> The clickable text users see</li>
+                    <li><strong>Closing tag:</strong> <code>&lt;/a&gt;</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 2: Internal vs External Links -->
+        <div class="section">
+            <h2>2. Internal vs External Links</h2>
+
+            <h3>External Links (Absolute URLs)</h3>
+            <p>External links point to pages on other websites and require the full URL including the protocol (http://
+                or https://).</p>
+            <pre class="code-example"><code>&lt;a href="https://www.google.com"&gt;Google Search&lt;/a&gt;
+&lt;a href="https://github.com"&gt;GitHub&lt;/a&gt;
+&lt;a href="https://developer.mozilla.org"&gt;MDN Web Docs&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="https://www.google.com" class="external-link">Google Search</a><br>
+                <a href="https://github.com" class="external-link">GitHub</a><br>
+                <a href="https://developer.mozilla.org" class="external-link">MDN Web Docs</a>
+            </div>
+
+            <h3>Internal Links (Relative URLs)</h3>
+            <p>Internal links point to pages within the same website and use relative paths.</p>
+            <pre class="code-example"><code>&lt;!-- Same directory --&gt;
+&lt;a href="contact.html"&gt;Contact Page&lt;/a&gt;
+
+&lt;!-- Subdirectory --&gt;
+&lt;a href="products/shoes.html"&gt;Shoes Section&lt;/a&gt;
+
+&lt;!-- Parent directory --&gt;
+&lt;a href="../index.html"&gt;Home&lt;/a&gt;
+
+&lt;!-- Root directory --&gt;
+&lt;a href="/services/web-design.html"&gt;Web Design Services&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="#" class="internal-link">Contact Page</a><br>
+                <a href="#" class="internal-link">Shoes Section</a><br>
+                <a href="#" class="internal-link">Home</a><br>
+                <a href="#" class="internal-link">Web Design Services</a>
+            </div>
+
+            <h3>Fragment Links (Same Page Navigation)</h3>
+            <pre class="code-example"><code>&lt;!-- Link to section with id="top" --&gt;
+&lt;a href="#top"&gt;Go to Top&lt;/a&gt;
+
+&lt;!-- Link to section with id="contact" --&gt;
+&lt;a href="#contact"&gt;Contact Section&lt;/a&gt;
+
+&lt;!-- Link to top of current page --&gt;
+&lt;a href="#"&gt;Back to Top&lt;/a&gt;
+
+&lt;!-- Target elements --&gt;
+&lt;h2 id="top"&gt;Page Header&lt;/h2&gt;
+&lt;section id="contact"&gt;Contact Information&lt;/section&gt;</code></pre>
+            <div class="output-example">
+                <a href="#top" class="fragment-link">Go to Top</a><br>
+                <a href="#contact" class="fragment-link">Contact Section</a><br>
+                <a href="#" class="fragment-link">Back to Top</a>
+            </div>
+
+            <div class="best-practice">
+                <strong>Best Practice:</strong> Use external links for other websites, internal links for your own
+                pages, and fragment links for navigation within the same page.
+            </div>
+        </div>
+
+        <!-- Section 3: Email and Telephone Links -->
+        <div class="section">
+            <h2>3. Email and Telephone Links</h2>
+
+            <h3>Email Links (mailto)</h3>
+            <pre class="code-example"><code>&lt;!-- Basic email link --&gt;
+&lt;a href="mailto:contact@example.com"&gt;Send Email&lt;/a&gt;
+
+&lt;!-- Email with subject --&gt;
+&lt;a href="mailto:support@example.com?subject=Technical Support"&gt;Technical Support&lt;/a&gt;
+
+&lt;!-- Email with multiple parameters --&gt;
+&lt;a href="mailto:info@example.com?subject=Inquiry&amp;body=Hello, I would like to know more about your services."&gt;
+    Contact Us
+&lt;/a&gt;
+
+&lt;!-- Email with CC and BCC --&gt;
+&lt;a href="mailto:sales@example.com?cc=manager@example.com&amp;bcc=admin@example.com&amp;subject=Sales Inquiry"&gt;
+    Sales Team
+&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="mailto:contact@example.com" class="email-link">Send Email</a><br>
+                <a href="mailto:support@example.com?subject=Technical Support" class="email-link">Technical
+                    Support</a><br>
+                <a href="mailto:info@example.com?subject=Inquiry&body=Hello, I would like to know more about your services."
+                    class="email-link">Contact Us</a><br>
+                <a href="mailto:sales@example.com?cc=manager@example.com&bcc=admin@example.com&subject=Sales Inquiry"
+                    class="email-link">Sales Team</a>
+            </div>
+
+            <h3>Telephone Links (tel)</h3>
+            <pre class="code-example"><code>&lt;!-- Basic phone link --&gt;
+&lt;a href="tel:+1234567890"&gt;Call Us: (123) 456-7890&lt;/a&gt;
+
+&lt;!-- International format --&gt;
+&lt;a href="tel:+44-20-7946-0958"&gt;UK Office: +44 20 7946 0958&lt;/a&gt;
+
+&lt;!-- With extension --&gt;
+&lt;a href="tel:+1234567890,123"&gt;Call Support: (123) 456-7890 ext. 123&lt;/a&gt;
+
+&lt;!-- Mobile optimized --&gt;
+&lt;a href="tel:+1-555-123-4567"&gt;Emergency: (555) 123-4567&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="tel:+1234567890" class="phone-link">Call Us: (123) 456-7890</a><br>
+                <a href="tel:+44-20-7946-0958" class="phone-link">UK Office: +44 20 7946 0958</a><br>
+                <a href="tel:+1234567890,123" class="phone-link">Call Support: (123) 456-7890 ext. 123</a><br>
+                <a href="tel:+1-555-123-4567" class="phone-link">Emergency: (555) 123-4567</a>
+            </div>
+
+            <h3>SMS Links</h3>
+            <pre class="code-example"><code>&lt;!-- Basic SMS link --&gt;
+&lt;a href="sms:+1234567890"&gt;Send SMS&lt;/a&gt;
+
+&lt;!-- SMS with pre-filled message --&gt;
+&lt;a href="sms:+1234567890?&amp;body=Hello, I'm interested in your services"&gt;
+    Text Us
+&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="sms:+1234567890" class="sms-link">Send SMS</a><br>
+                <a href="sms:+1234567890?&body=Hello, I'm interested in your services" class="sms-link">Text Us</a>
+            </div>
+
+            <div class="info-box">
+                <strong>Email Parameters:</strong>
+                <ul>
+                    <li><code>subject</code> - Pre-fills the email subject</li>
+                    <li><code>body</code> - Pre-fills the email body</li>
+                    <li><code>cc</code> - Carbon copy recipients</li>
+                    <li><code>bcc</code> - Blind carbon copy recipients</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 4: Link Attributes -->
+        <div class="section">
+            <h2>4. Link Attributes: target, title, rel</h2>
+
+            <h3>Target Attribute</h3>
+            <p>Controls where the linked page opens.</p>
+            <pre class="code-example"><code>&lt;!-- Opens in new tab/window --&gt;
+&lt;a href="https://example.com" target="_blank"&gt;External Site (New Tab)&lt;/a&gt;
+
+&lt;!-- Opens in same window (default) --&gt;
+&lt;a href="page.html" target="_self"&gt;Same Window&lt;/a&gt;
+
+&lt;!-- Opens in parent frame --&gt;
+&lt;a href="content.html" target="_parent"&gt;Parent Frame&lt;/a&gt;
+
+&lt;!-- Opens in full window --&gt;
+&lt;a href="fullpage.html" target="_top"&gt;Full Window&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="https://example.com" target="_blank" class="target-demo">External Site (New Tab)</a><br>
+                <a href="#" target="_self" class="target-demo">Same Window</a><br>
+                <a href="#" target="_parent" class="target-demo">Parent Frame</a><br>
+                <a href="#" target="_top" class="target-demo">Full Window</a>
+            </div>
+
+            <h3>Title Attribute</h3>
+            <p>Provides additional information displayed as a tooltip on hover.</p>
+            <pre class="code-example"><code>&lt;a href="https://github.com" 
+   title="Visit GitHub - The world's largest code repository"&gt;
+   GitHub
+&lt;/a&gt;
+
+&lt;a href="mailto:support@example.com" 
+   title="Send an email to our support team"&gt;
+   Email Support
+&lt;/a&gt;
+
+&lt;a href="tel:+1234567890" 
+   title="Click to call our office during business hours"&gt;
+   Call Now
+&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="https://github.com" title="Visit GitHub - The world's largest code repository"
+                    class="title-demo">GitHub</a><br>
+                <a href="mailto:support@example.com" title="Send an email to our support team" class="title-demo">Email
+                    Support</a><br>
+                <a href="tel:+1234567890" title="Click to call our office during business hours" class="title-demo">Call
+                    Now</a>
+            </div>
+
+            <h3>Rel Attribute</h3>
+            <p>Defines the relationship between the current page and the linked resource.</p>
+            <pre class="code-example"><code>&lt;!-- External link security --&gt;
+&lt;a href="https://external-site.com" 
+   target="_blank" 
+   rel="noopener noreferrer"&gt;
+   Secure External Link
+&lt;/a&gt;
+
+&lt;!-- No follow for untrusted content --&gt;
+&lt;a href="https://untrusted-site.com" rel="nofollow"&gt;
+   Untrusted Link
+&lt;/a&gt;
+
+&lt;!-- Author information --&gt;
+&lt;a href="https://author-portfolio.com" rel="author"&gt;
+   About the Author
+&lt;/a&gt;
+
+&lt;!-- License information --&gt;
+&lt;a href="license.html" rel="license"&gt;
+   View License
+&lt;/a&gt;
+
+&lt;!-- Help documentation --&gt;
+&lt;a href="help.html" rel="help"&gt;
+   Get Help
+&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="https://external-site.com" target="_blank" rel="noopener noreferrer" class="rel-demo">Secure
+                    External Link</a><br>
+                <a href="https://untrusted-site.com" rel="nofollow" class="rel-demo">Untrusted Link</a><br>
+                <a href="#" rel="author" class="rel-demo">About the Author</a><br>
+                <a href="#" rel="license" class="rel-demo">View License</a><br>
+                <a href="#" rel="help" class="rel-demo">Get Help</a>
+            </div>
+
+            <h3>Combined Attributes Example</h3>
+            <pre class="code-example"><code>&lt;a href="https://learn.example.com" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   title="Learn web development - opens in new tab"&gt;
+   Learning Resources
+&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="https://learn.example.com" target="_blank" rel="noopener noreferrer"
+                    title="Learn web development - opens in new tab" class="combined-demo">Learning Resources</a>
+            </div>
+
+            <div class="best-practice">
+                <strong>Security Best Practice:</strong> Always use <code>rel="noopener noreferrer"</code> with
+                <code>target="_blank"</code> to prevent security vulnerabilities and protect user privacy.
+            </div>
+
+            <div class="warning">
+                <strong>Accessibility Note:</strong> Use the <code>title</code> attribute to provide helpful context,
+                but don't rely on it as the only way to convey important information since it's not accessible to
+                keyboard users.
+            </div>
+        </div>
+
+        <!-- Advanced Examples Section -->
+        <div class="section">
+            <h2>5. Advanced Link Examples</h2>
+
+            <h3>Image Links</h3>
+            <pre class="code-example"><code>&lt;a href="https://example.com" target="_blank"&gt;
+    &lt;img src="logo.png" alt="Company Logo" width="150" height="50"&gt;
+&lt;/a&gt;</code></pre>
+
+            <h3>Button-styled Links</h3>
+            <pre class="code-example"><code>&lt;a href="signup.html" class="btn btn-primary"&gt;Sign Up Now&lt;/a&gt;
+&lt;a href="tel:+1234567890" class="btn btn-call"&gt;Call Us&lt;/a&gt;
+&lt;a href="mailto:contact@example.com" class="btn btn-email"&gt;Email Us&lt;/a&gt;</code></pre>
+            <div class="output-example">
+                <a href="#" class="btn btn-primary">Sign Up Now</a>
+                <a href="tel:+1234567890" class="btn btn-call">Call Us</a>
+                <a href="mailto:contact@example.com" class="btn btn-email">Email Us</a>
+            </div>
+
+            <h3>Navigation Menu</h3>
+            <pre class="code-example"><code>&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="services.html"&gt;Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            <div class="output-example">
+                <nav class="demo-nav">
+                    <ul>
+                        <li><a href="#" class="nav-link">Home</a></li>
+                        <li><a href="#" class="nav-link">About</a></li>
+                        <li><a href="#" class="nav-link">Services</a></li>
+                        <li><a href="#" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Quick Reference Section -->
+        <div class="section summary-section">
+            <h2>Quick Reference Guide</h2>
+
+            <table class="reference-table">
+                <thead>
+                    <tr>
+                        <th>Link Type</th>
+                        <th>Syntax</th>
+                        <th>Use Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>External URL</td>
+                        <td><code>href="https://example.com"</code></td>
+                        <td>Linking to other websites</td>
+                    </tr>
+                    <tr>
+                        <td>Internal Page</td>
+                        <td><code>href="about.html"</code></td>
+                        <td>Navigation within your site</td>
+                    </tr>
+                    <tr>
+                        <td>Page Section</td>
+                        <td><code>href="#section-id"</code></td>
+                        <td>Jump to page sections</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><code>href="mailto:email@domain.com"</code></td>
+                        <td>Open email client</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td><code>href="tel:+1234567890"</code></td>
+                        <td>Initiate phone call</td>
+                    </tr>
+                    <tr>
+                        <td>SMS</td>
+                        <td><code>href="sms:+1234567890"</code></td>
+                        <td>Open messaging app</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="reference-table attributes-table">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Values</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>target</code></td>
+                        <td><code>_blank</code>, <code>_self</code>, <code>_parent</code>, <code>_top</code></td>
+                        <td>Where to open the link</td>
+                    </tr>
+                    <tr>
+                        <td><code>title</code></td>
+                        <td>Text string</td>
+                        <td>Tooltip on hover</td>
+                    </tr>
+                    <tr>
+                        <td><code>rel</code></td>
+                        <td><code>noopener</code>, <code>noreferrer</code>, <code>nofollow</code></td>
+                        <td>Relationship and security</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="page-footer">
+            <p><strong>Practice Tip:</strong> Test your links on different devices and browsers to ensure they work
+                correctly, especially email and phone links!</p>
+            <p class="footer-emphasis"><em>Happy linking! Connect the web one anchor tag at a time.</em></p>
+        </footer>
+    </div>
+</body>
+
+</html>
