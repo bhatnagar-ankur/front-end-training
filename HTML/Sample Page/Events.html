@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>JavaScript HTML Events</h1>
+    <h2>The onclick Attribute</h2>
+
+    <button onmouseout="onButtonMouseOut()">The time is?</button>
+
+    <p id="demo">Hello</p>
+
+    <div class="demoClass"> I am Div 1</div>
+    <div class="demoClass"> I am Div 4</div>
+    <div class="demoClass"> I am Div 3</div>
+    <div class="demoClass"> I am Div 2</div>
+    <div class="demoClass"> I am Div 5</div>
+
+    <script>
+        function onLoad() {
+            alert("Welcome to JavaScript HTML Events!");
+        }
+
+        function onButtonMouseOut(args) {
+            console.log("Button mouse out: " + args);
+            document.getElementById("demo").innerHTML = Date();
+        }   
+    </script>
+</body>
+
+</html>
