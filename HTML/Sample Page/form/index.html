@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sample HTML Form</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function (e) {
+            let valid = true;
+            let messages = [];
+
+            // Validate all input fields except file and button
+            const inputs = form.querySelectorAll('input:not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"])');
+            inputs.forEach(input => {
+                if (input.type === 'radio') {
+                // Only check one radio group
+                if (!form.querySelector(`input[name="${input.name}"]:checked`)) {
+                    valid = false;
+                    messages.push('Gender is required.');
+                }
+                } else if (input.type === 'checkbox') {
+                // Only check one checkbox group
+                if (input.name === 'skills' && !form.querySelector('input[name="skills"]:checked')) {
+                    valid = false;
+                    messages.push('At least one skill is required.');
+                }
+                } else if (!input.value.trim()) {
+                valid = false;
+                messages.push(`${input.name.charAt(0).toUpperCase() + input.name.slice(1)} is required.`);
+                }
+            });
+
+            // Validate select
+            const select = form.querySelector('select');
+            if (!select.value) {
+                valid = false;
+                messages.push('Country is required.');
+            }
+
+            // Validate textarea
+            const textarea = form.querySelector('textarea');
+            if (!textarea.value.trim()) {
+                valid = false;
+                messages.push('Address is required.');
+            }
+
+            if (!valid) {
+                e.preventDefault();
+                alert(messages.join('\n'));
+            }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Sample HTML Form</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="text" name="name" placeholder="Scrooge McDuck"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="john@example.com"><br><br>
+
+        <label for="number">Phone Number:</label>
+        <input type="number" id="number" name="number" placeholder="42"><br><br>
+
+        <label for="tel">Telephone:</label>
+        <input type="tel" id="tel" name="tel" placeholder="123-456-7890"><br><br>
+
+        <label for="url">URL:</label>
+        <input type="url" id="url" name="url" placeholder="https://example.com"><br><br>
+
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search" placeholder="Sample search"><br><br>
+
+        <label for="date">DOB:</label>
+        <input type="date" id="date" name="date"><br><br>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time"><br><br>
+
+        <label for="datetime-local">Datetime Local:</label>
+        <input type="datetime-local" id="datetime-local" name="datetime-local"><br><br>
+
+        <label for="month">Month:</label>
+        <input type="month" id="month" name="month"><br><br>
+
+        <label for="week">Week:</label>
+        <input type="week" id="week" name="week"><br><br>
+
+        <label for="color">Color:</label>
+        <input type="color" id="color" name="color"><br><br>
+
+        <label for="file">File:</label>
+        <input type="file" id="file" name="file"><br><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label><br><br>
+
+        <label>Checkbox:</label>
+        <input type="checkbox" id="html" name="skills" value="HTML">
+        <label for="html">HTML</label>
+        <input type="checkbox" id="css" name="skills" value="CSS">
+        <label for="css">CSS</label>
+        <input type="checkbox" id="js" name="skills" value="JS">
+        <label for="js">JS</label><br><br>
+
+        <label for="select">Select Country:</label>
+        <select id="select" name="select">
+            <option value="india">India</option>
+            <option value="bangladesh">Bangladesh</option>
+            <option value="nepal">Nepal</option>
+            <option value="bhutan">Bhutan</option>
+            <option value="sri-lanka">Sri Lanka</option>
+            <option value="myanmar">Myanmar</option>
+            <option value="china">China</option>
+        </select><br><br>
+
+        <label for="address">Address:</label><br>
+        <textarea id="address" name="address" rows="4" cols="30" placeholder="Sample text here."></textarea><br><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+        <button type="button">Button</button>
+    </form>
+</body>
+
+</html>
