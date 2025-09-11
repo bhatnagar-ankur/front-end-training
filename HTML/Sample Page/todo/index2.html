@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Todo List</title>
+    <!-- Import Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+    <style>
+        /* Basic body styling for centering and background */
+        body {
+            background: #f5f7fa;
+            font-family: 'Roboto', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Container for the todo app */
+        .container {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            margin-top: 4rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Heading styling */
+        h1 {
+            text-align: center;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Row for input and button */
+        .input-row {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Input field styling */
+        input[type="text"] {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        /* Input focus effect */
+        input[type="text"]:focus {
+            border-color: #6366f1;
+        }
+
+        /* Add button styling */
+        button {
+            padding: 0.75rem 1.2rem;
+            background: #6366f1;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background: #4f46e5;
+        }
+
+        /* Todo list styling */
+        ul#todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Individual todo item styling */
+        ul#todo-list li {
+            background: #f1f5f9;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Delete button styling inside todo items */
+        ul#todo-list li button {
+            background: #ef4444;
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            margin-left: 1rem;
+            transition: background 0.2s;
+        }
+
+        /* Delete button hover effect */
+        ul#todo-list li button:hover {
+            background: #dc2626;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Todo List</h1>
+        <div class="input-row">
+            <!-- Input for new task -->
+            <input type="text" placeholder="Add a new task..." />
+            <!-- Button to add new task -->
+            <button>Add Item</button>
+        </div>
+        <!-- Unordered list to display todo items -->
+        <ul id="todo-list"></ul>
+    </div>
+    <script>
+        // Add click event listener to "Add Item" button
+        document.querySelector('.input-row button').addEventListener('click', addItem);
+
+        // Function to add a new item to the list
+        function addItem() {
+            const input = document.querySelector('input[type="text"]');
+            const value = input.value.trim();
+            if (value) {
+            createListItem(value);
+            input.value = '';
+            }
+        }
+
+        // Function to create a new list item and add it to the list
+        function createListItem(value) {
+            const li = document.createElement('li');
+            li.textContent = value;
+            addDeleteButton(li);
+            document.getElementById('todo-list').appendChild(li);
+        }
+
+        // Function to add a delete button to a list item
+        function addDeleteButton(li) {
+            const button = document.createElement('button');
+            button.textContent = 'Delete';
+            button.addEventListener('click', function (e) {
+            // Identify the parent <li> of the clicked button and remove it
+            const row = e.target.closest('li');
+            if (row) row.remove();
+            });
+            li.appendChild(button);
+        }
+
+        // Support pressing "Enter" to add item
+        document.querySelector('input[type="text"]').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+            addItem();
+            }
+        });
+    </script>
+</body>
+
+</html>

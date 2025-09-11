@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function-Optimized Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .calculator {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+
+        .display {
+            margin-bottom: 15px;
+        }
+
+        #result {
+            width: 100%;
+            height: 60px;
+            font-size: 24px;
+            text-align: right;
+            padding: 0 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: #f8f9fa;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .btn {
+            height: 60px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .number {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .number:hover {
+            background: #e9ecef;
+        }
+
+        .operator {
+            background: #007bff;
+            color: white;
+        }
+
+        .operator:hover {
+            background: #0056b3;
+        }
+
+        .clear {
+            background: #dc3545;
+            color: white;
+        }
+
+        .clear:hover {
+            background: #c82333;
+        }
+
+        .equal {
+            background: #28a745;
+            color: white;
+        }
+
+        .equal:hover {
+            background: #218838;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+
+        .equals {
+            grid-row: span 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="result" readonly>
+        </div>
+        <div class="buttons" id="buttonContainer">
+            <!-- Buttons generated dynamically -->
+        </div>
+    </div>
+
+    <script>
+        // ==================================================
+        // 1. REGULAR FUNCTIONS - Basic function declarations
+        // ==================================================
+
+        // Function to get display element (demonstrates function with return value)
+        function getDisplay() {
+            return document.getElementById('result');
+        }
+
+        // Function to append value to display (demonstrates function with parameters)
+        function appendToDisplay(value) {
+            const display = getDisplay();
+            display.value += value;
+        }
+
+        // Function to clear display (demonstrates simple function)
+        function clearDisplay() {
+            const display = getDisplay();
+            display.value = '';
+        }
+
+        // Function to delete last character (demonstrates string manipulation)
+        function deleteLast() {
+            const display = getDisplay();
+            display.value = display.value.slice(0, -1);
+        }
+
+        // Function to perform calculation (demonstrates error handling)
+        function calculate() {
+            const display = getDisplay();
+            try {
+                let expression = display.value.replace(/×/g, '*');
+                if (expression === '') return;
+
+                let result = eval(expression);
+                display.value = !isFinite(result) ? 'Error' : result;
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+
+        // ==================================================
+        // 2. FUNCTION EXPRESSIONS - Functions assigned to variables
+        // ==================================================
+
+        // Function expression for creating button element
+        const createButton = function (buttonData) {
+            const button = document.createElement('button');
+            button.textContent = buttonData.text;
+            button.className = `btn ${buttonData.class}`;
+
+            // Handle special grid properties
+            if (buttonData.colSpan) button.style.gridColumn = `span ${buttonData.colSpan}`;
+            if (buttonData.rowSpan) button.style.gridRow = `span ${buttonData.rowSpan}`;
+
+            return button;
+        };
+
+        // Function expression for adding event listeners
+        const attachButtonEvents = function (button, buttonData) {
+            button.addEventListener('click', function () {
+                executeButtonAction(buttonData.action, buttonData.value);
+            });
+        };
+
+        // ==================================================
+        // 3. ARROW FUNCTIONS - Modern ES6 syntax
+        // ==================================================
+
+        // Arrow function for button action execution
+        const executeButtonAction = (action, value) => {
+            switch (action) {
+                case 'append': appendToDisplay(value); break;
+                case 'clear': clearDisplay(); break;
+                case 'delete': deleteLast(); break;
+                case 'calculate': calculate(); break;
+            }
+        };
+
+        // Arrow function for keyboard key validation
+        const isValidKey = (key) => {
+            const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                '+', '-', '*', '/', '.', '=', 'Enter', 'Escape', 'Backspace'];
+            return validKeys.includes(key);
+        };
+
+        // ==================================================
+        // 4. HIGHER-ORDER FUNCTIONS - Functions that work with other functions
+        // ==================================================
+
+        // Higher-order function that processes each button configuration
+        const processButtons = function (buttonArray, processingFunction) {
+            buttonArray.forEach(processingFunction);
+        };
+
+        // Higher-order function for array filtering and mapping
+        const createFilteredButtons = (buttons, filterCondition) => {
+            return buttons.filter(filterCondition).map(createButton);
+        };
+
+        // ==================================================
+        // 5. CALLBACK FUNCTIONS - Functions passed as arguments
+        // ==================================================
+
+        // Function that accepts a callback for button generation
+        function generateButtonsWithCallback(buttonData, callback) {
+            const container = document.getElementById('buttonContainer');
+            buttonData.forEach((data, index) => {
+                const button = createButton(data);
+                attachButtonEvents(button, data);
+                container.appendChild(button);
+
+                // Execute callback after each button creation
+                if (callback) callback(button, index);
+            });
+        }
+
+        // ==================================================
+        // 6. PURE FUNCTIONS - Functions without side effects
+        // ==================================================
+
+        // Pure function to create button configuration (always returns same output for same input)
+        const createButtonConfig = (text, className, action, value = null) => {
+            return {
+                text: text,
+                class: className,
+                action: action,
+                value: value || text,
+                colSpan: text === '0' ? 2 : 1,
+                rowSpan: text === '=' ? 2 : 1
+            };
+        };
+
+        // Pure function to validate expression
+        const isValidExpression = (expression) => {
+            return expression !== '' && !isNaN(eval(expression.replace(/×/g, '*')));
+        };
+
+        // ==================================================
+        // 7. IIFE (Immediately Invoked Function Expression)
+        // ==================================================
+
+        // IIFE to initialize button configurations
+        const buttonConfigs = (function () {
+            return [
+                // Row 1
+                createButtonConfig('C', 'clear', 'clear'),
+                createButtonConfig('⌫', 'operator', 'delete'),
+                createButtonConfig('/', 'operator', 'append'),
+                createButtonConfig('×', 'operator', 'append', '*'),
+
+                // Row 2
+                createButtonConfig('7', 'number', 'append'),
+                createButtonConfig('8', 'number', 'append'),
+                createButtonConfig('9', 'number', 'append'),
+                createButtonConfig('-', 'operator', 'append'),
+
+                // Row 3
+                createButtonConfig('4', 'number', 'append'),
+                createButtonConfig('5', 'number', 'append'),
+                createButtonConfig('6', 'number', 'append'),
+                createButtonConfig('+', 'operator', 'append'),
+
+                // Row 4
+                createButtonConfig('1', 'number', 'append'),
+                createButtonConfig('2', 'number', 'append'),
+                createButtonConfig('3', 'number', 'append'),
+                createButtonConfig('=', 'equal equals', 'calculate'),
+
+                // Row 5
+                createButtonConfig('0', 'number zero', 'append'),
+                createButtonConfig('.', 'number', 'append')
+            ];
+        })();
+
+        // ==================================================
+        // 8. RECURSIVE FUNCTION - Function that calls itself
+        // ==================================================
+
+        // Recursive function to validate parentheses (advanced example)
+        function validateParentheses(expression, index = 0, count = 0) {
+            if (index === expression.length) return count === 0;
+
+            if (expression[index] === '(') count++;
+            else if (expression[index] === ')') count--;
+
+            if (count < 0) return false;
+
+            return validateParentheses(expression, index + 1, count);
+        }
+
+        // ==================================================
+        // 9. CLOSURE - Function with access to outer scope
+        // ==================================================
+
+        // Closure example - function that remembers calculation history
+        const createCalculationHistory = function () {
+            let history = [];
+
+            return {
+                add: function (calculation) {
+                    history.push(calculation);
+                },
+                get: function () {
+                    return [...history]; // Return copy to prevent external modification
+                },
+                clear: function () {
+                    history = [];
+                }
+            };
+        };
+
+        // Create history instance
+        const calculationHistory = createCalculationHistory();
+
+        // =========================
+        // 10. INITIALIZATION FUNCTIONS
+        // =========================
+
+        // Function to set up keyboard events
+        function setupKeyboardEvents() {
+            document.addEventListener('keydown', (event) => {
+                const key = event.key;
+
+                if (!isValidKey(key)) return;
+
+                event.preventDefault();
+
+                // Use object mapping for cleaner key handling
+                const keyActions = {
+                    'Escape': () => clearDisplay(),
+                    'Backspace': () => deleteLast(),
+                    'Enter': () => calculate(),
+                    '=': () => calculate(),
+                    '*': () => appendToDisplay('×')
+                };
+
+                if (keyActions[key]) {
+                    keyActions[key]();
+                } else if (key.match(/[0-9+\-/.]/)) {
+                    appendToDisplay(key);
+                }
+            });
+        }
+
+        // Main initialization function
+        function initializeCalculator() {
+            // Callback function for button generation logging
+            const buttonCreationCallback = (button, index) => {
+                console.log(`Button ${index + 1} created: ${button.textContent}`);
+            };
+
+            // Generate buttons using callback function
+            generateButtonsWithCallback(buttonConfigs, buttonCreationCallback);
+
+            // Setup keyboard events
+            setupKeyboardEvents();
+
+            console.log('Calculator initialized with all function types demonstrated!');
+        }
+
+        // Start the calculator when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeCalculator);
+    </script>
+</body>
+
+</html>

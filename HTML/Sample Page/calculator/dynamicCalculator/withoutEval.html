@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Calculator - No eval()</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .calculator {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+
+        .display {
+            margin-bottom: 15px;
+        }
+
+        #result {
+            width: 100%;
+            height: 60px;
+            font-size: 24px;
+            text-align: right;
+            padding: 0 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: #f8f9fa;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .btn {
+            height: 60px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .number {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .number:hover {
+            background: #e9ecef;
+        }
+
+        .operator {
+            background: #007bff;
+            color: white;
+        }
+
+        .operator:hover {
+            background: #0056b3;
+        }
+
+        .clear {
+            background: #dc3545;
+            color: white;
+        }
+
+        .clear:hover {
+            background: #c82333;
+        }
+
+        .equal {
+            background: #28a745;
+            color: white;
+        }
+
+        .equal:hover {
+            background: #218838;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+
+        .equals {
+            grid-row: span 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="result" readonly>
+        </div>
+        <div class="buttons" id="buttonContainer">
+            <!-- Buttons generated dynamically -->
+        </div>
+    </div>
+
+    <script>
+        // =========================
+        // SAFE CALCULATOR IMPLEMENTATION WITHOUT eval()
+        // =========================
+
+        // Calculator state management
+        const Calculator = {
+            display: null,
+            currentValue: '0',
+            previousValue: null,
+            operator: null,
+            waitingForOperator: false,
+
+            // Initialize calculator
+            init() {
+                this.display = document.getElementById('result');
+                this.updateDisplay();
+                this.generateButtons();
+                this.setupKeyboardEvents();
+            },
+
+            // Update display safely
+            updateDisplay() {
+                this.display.value = this.currentValue;
+            },
+
+            // Input a number
+            inputNumber(num) {
+                if (this.waitingForOperator) {
+                    this.currentValue = num;
+                    this.waitingForOperator = false;
+                } else {
+                    this.currentValue = this.currentValue === '0' ? num : this.currentValue + num;
+                }
+                this.updateDisplay();
+            },
+
+            // Input decimal point
+            inputDecimal() {
+                if (this.waitingForOperator) {
+                    this.currentValue = '0.';
+                    this.waitingForOperator = false;
+                } else if (this.currentValue.indexOf('.') === -1) {
+                    this.currentValue += '.';
+                }
+                this.updateDisplay();
+            },
+
+            // Clear calculator
+            clear() {
+                this.currentValue = '0';
+                this.previousValue = null;
+                this.operator = null;
+                this.waitingForOperator = false;
+                this.updateDisplay();
+            },
+
+            // Delete last character
+            deleteLast() {
+                if (this.currentValue.length > 1) {
+                    this.currentValue = this.currentValue.slice(0, -1);
+                } else {
+                    this.currentValue = '0';
+                }
+                this.updateDisplay();
+            },
+
+            // Handle operator input
+            inputOperator(nextOperator) {
+                const inputValue = parseFloat(this.currentValue);
+
+                if (this.previousValue === null) {
+                    this.previousValue = inputValue;
+                } else if (this.operator) {
+                    const currentValue = this.previousValue || 0;
+                    const newValue = this.calculate(currentValue, inputValue, this.operator);
+
+                    this.currentValue = `${newValue}`;
+                    this.previousValue = newValue;
+                }
+
+                this.waitingForOperator = true;
+                this.operator = nextOperator;
+                this.updateDisplay();
+            },
+
+            // Perform calculation safely without eval()
+            calculate(firstValue, secondValue, operator) {
+                switch (operator) {
+                    case '+':
+                        return this.safeAdd(firstValue, secondValue);
+                    case '-':
+                        return this.safeSubtract(firstValue, secondValue);
+                    case '*':
+                        return this.safeMultiply(firstValue, secondValue);
+                    case '/':
+                        return this.safeDivide(firstValue, secondValue);
+                    default:
+                        return secondValue;
+                }
+            },
+
+            // Safe arithmetic operations with error handling
+            safeAdd(a, b) {
+                const result = a + b;
+                return this.validateResult(result);
+            },
+
+            safeSubtract(a, b) {
+                const result = a - b;
+                return this.validateResult(result);
+            },
+
+            safeMultiply(a, b) {
+                const result = a * b;
+                return this.validateResult(result);
+            },
+
+            safeDivide(a, b) {
+                if (b === 0) {
+                    this.displayError('Cannot divide by zero');
+                    return 0;
+                }
+                const result = a / b;
+                return this.validateResult(result);
+            },
+
+            // Validate calculation results
+            validateResult(result) {
+                if (!isFinite(result)) {
+                    this.displayError('Invalid calculation');
+                    return 0;
+                }
+
+                // Handle very large or very small numbers
+                if (Math.abs(result) > 1e15) {
+                    this.displayError('Number too large');
+                    return 0;
+                }
+
+                // Round to prevent floating point errors
+                return Math.round(result * 1e10) / 1e10;
+            },
+
+            // Display error message
+            displayError(message) {
+                this.currentValue = 'Error';
+                this.display.value = message;
+                setTimeout(() => {
+                    this.clear();
+                }, 2000);
+            },
+
+            // Handle equals button
+            calculate() {
+                const inputValue = parseFloat(this.currentValue);
+
+                if (this.previousValue !== null && this.operator) {
+                    const newValue = this.calculate(this.previousValue, inputValue, this.operator);
+                    this.currentValue = `${newValue}`;
+                    this.previousValue = null;
+                    this.operator = null;
+                    this.waitingForOperator = true;
+                    this.updateDisplay();
+                }
+            },
+
+            // Generate buttons dynamically
+            generateButtons() {
+                const buttonContainer = document.getElementById('buttonContainer');
+
+                const buttons = [
+                    { text: 'C', class: 'clear', action: 'clear' },
+                    { text: '⌫', class: 'operator', action: 'delete' },
+                    { text: '/', class: 'operator', action: 'operator' },
+                    { text: '*', class: 'operator', action: 'operator' },
+
+                    { text: '7', class: 'number', action: 'number' },
+                    { text: '8', class: 'number', action: 'number' },
+                    { text: '9', class: 'number', action: 'number' },
+                    { text: '-', class: 'operator', action: 'operator' },
+
+                    { text: '4', class: 'number', action: 'number' },
+                    { text: '5', class: 'number', action: 'number' },
+                    { text: '6', class: 'number', action: 'number' },
+                    { text: '+', class: 'operator', action: 'operator' },
+
+                    { text: '1', class: 'number', action: 'number' },
+                    { text: '2', class: 'number', action: 'number' },
+                    { text: '3', class: 'number', action: 'number' },
+                    { text: '=', class: 'equal equals', action: 'equals' },
+
+                    { text: '0', class: 'number zero', action: 'number' },
+                    { text: '.', class: 'number', action: 'decimal' }
+                ];
+
+                buttons.forEach(buttonData => {
+                    const button = document.createElement('button');
+                    button.textContent = buttonData.text;
+                    button.className = `btn ${buttonData.class}`;
+
+                    if (buttonData.text === '0') button.style.gridColumn = 'span 2';
+                    if (buttonData.text === '=') button.style.gridRow = 'span 2';
+
+                    button.addEventListener('click', () => {
+                        this.handleButtonClick(buttonData);
+                    });
+
+                    buttonContainer.appendChild(button);
+                });
+            },
+
+            // Handle button clicks safely
+            handleButtonClick(buttonData) {
+                switch (buttonData.action) {
+                    case 'number':
+                        this.inputNumber(buttonData.text);
+                        break;
+                    case 'operator':
+                        this.inputOperator(buttonData.text);
+                        break;
+                    case 'decimal':
+                        this.inputDecimal();
+                        break;
+                    case 'equals':
+                        this.calculate();
+                        break;
+                    case 'clear':
+                        this.clear();
+                        break;
+                    case 'delete':
+                        this.deleteLast();
+                        break;
+                }
+            },
+
+            // Setup keyboard events
+            setupKeyboardEvents() {
+                document.addEventListener('keydown', (event) => {
+                    const key = event.key;
+                    event.preventDefault();
+
+                    if (key >= '0' && key <= '9') {
+                        this.inputNumber(key);
+                    } else if (['+', '-', '*', '/'].includes(key)) {
+                        this.inputOperator(key);
+                    } else if (key === '.') {
+                        this.inputDecimal();
+                    } else if (key === 'Enter' || key === '=') {
+                        this.calculate();
+                    } else if (key === 'Escape') {
+                        this.clear();
+                    } else if (key === 'Backspace') {
+                        this.deleteLast();
+                    }
+                });
+            }
+        };
+
+        // Initialize calculator when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            Calculator.init();
+        });
+    </script>
+</body>
+
+</html>
