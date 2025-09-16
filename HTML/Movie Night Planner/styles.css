@@ -1,0 +1,247 @@
+:root {
+    /* Color Palette */
+    --color-bg-gradient-start: #f953c6;
+    --color-bg-gradient-end: #b91d73;
+    --color-primary: #b91d73;
+    --color-primary-hover: #99165f;
+    --color-accent: #f59e0b;
+    --color-card-bg: #ffffff;
+    --color-input-bg: #f3f3f3;
+    --color-input-bg-focus: #ffffff;
+    --color-text: #333333;
+    --color-text-light: #555555;
+
+    /* Typography */
+    --font-family: 'Poppins', sans-serif;
+    --font-size-base: 1rem;
+    --font-size-header: 2.5rem;
+    --font-size-card-title: 1.25rem;
+    --font-size-small: 0.875rem;
+
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+
+    /* Shadows */
+    --shadow-light: 0 6px 20px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 10px 40px rgba(0, 0, 0, 0.2);
+    --shadow-heavy: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%);
+    color: var(--color-text);
+    min-height: 100vh;
+}
+
+/* Container */
+.app-container {
+    max-width: 900px;
+    margin: var(--spacing-xl) auto;
+    padding: var(--spacing-lg);
+    background: var(--color-card-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.header h1 {
+    font-size: var(--font-size-header);
+    color: var(--color-primary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.movie-form {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-sm);
+}
+
+.movie-form input,
+.movie-form button {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: none;
+    font-size: var(--font-size-base);
+}
+
+.movie-form input {
+    flex: 1;
+    background: var(--color-input-bg);
+    transition: background 0.3s;
+}
+
+.movie-form input:focus {
+    background: var(--color-input-bg-focus);
+}
+
+.movie-form button {
+    background: var(--color-primary);
+    color: var(--color-card-bg);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.movie-form button:hover {
+    background: var(--color-primary-hover);
+    transform: scale(1.05);
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.filter-group input[type="range"] {
+    width: 150px;
+}
+
+.filter-group #rating-value {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+/* Planner Grid */
+.planner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+/* Movie Card */
+.movie-card {
+    background: var(--color-card-bg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-heavy);
+}
+
+.movie-card::before {
+    content: '🎥';
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    font-size: 1.5rem;
+}
+
+.card-content {
+    padding: var(--spacing-lg);
+    animation: popIn 0.5s ease-out;
+}
+
+.card-content h2 {
+    font-size: var(--font-size-card-title);
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+    margin-left: var(--spacing-xl);
+}
+
+.card-content p {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-light);
+}
+
+.rating {
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+/* Delete Button on Movie Card */
+.movie-card .delete-btn {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background: rgba(229, 62, 62, 0.85);
+    border: none;
+    color: #fff;
+    font-size: var(--font-size-small);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.movie-card .delete-btn:hover {
+    background: rgba(229, 62, 62, 1);
+    transform: scale(1.1);
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .movie-form {
+        flex-direction: column;
+    }
+}
